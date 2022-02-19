@@ -49,16 +49,35 @@ internal class CaseListActivity : ChildActivity() {
         if (BuildConfig.DEBUG)
             fabAddLetter.isVisible = true
 
+        model = intent.getSerializableExtra(KEY_CASE_LIST_TYPE) as CaseListModel
+        setTitle(model?.caseName ?: getString(R.string.document_kartable))
+
         configToolbar(toolbar)
 
         rclCaseList.layoutManager(
             LinearLayoutManager(this)
         )
-
-        model = intent.getSerializableExtra(KEY_CASE_LIST_TYPE) as CaseListModel
-        setTitle(model?.caseName ?: getString(R.string.document_kartable))
+        initialList()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setContentView(R.layout.activity_case_list)
+        super.onCreate(savedInstanceState)
+
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        refreshList()
+    }
+
+    private fun refreshList() {
+        if (!rclCaseList.isOnLoading)
+            rclCaseList.showLoading()
+        adapter?.clear()
+        getCaseList()
+    }
     private fun getCaseList() {
         when (model?.caseType) {
             CaseType.DOCUMENT ->
@@ -111,14 +130,6 @@ internal class CaseListActivity : ChildActivity() {
         )
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        setContentView(R.layout.activity_case_list)
-        super.onCreate(savedInstanceState)
-
-        initialList()
-
-        getCaseList()
-    }
 
 
     private fun initialList() {
@@ -441,17 +452,7 @@ internal class CaseListActivity : ChildActivity() {
         }.show(supportFragmentManager, CaseFilterDialog.TAG)
     }
 
-    override fun onResume() {
-        super.onResume()
-        refreshList()
-    }
 
-    private fun refreshList() {
-        if (!rclCaseList.isOnLoading)
-            rclCaseList.showLoading()
-        adapter?.clear()
-        getCaseList()
-    }
 
     override fun handleError() {
         super.handleError()

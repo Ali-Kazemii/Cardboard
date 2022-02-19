@@ -14,7 +14,7 @@ android {
         targetSdk 31
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -41,7 +41,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     //koin
-    implementation "io.insert-koin:koin-androidx-ext:2.2.3"
-    implementation "io.insert-koin:koin-androidx-viewmodel:2.2.3"
+    implementation "io.insert-koin:koin-core:3.2.0-beta-1"
+    implementation "io.insert-koin:koin-android:3.2.0-beta-1"
 }
 apply plugin: 'koin'

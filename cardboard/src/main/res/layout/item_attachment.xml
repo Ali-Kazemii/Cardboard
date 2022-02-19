@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="90dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/ic_no_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/lblFileName"
+            style="@style/LabelCaptionStyle"
+            android:text="@string/file_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtFileName"
+            style="@style/TextCaptionStyle"
+            android:layout_width="0dp"
+            android:layout_marginEnd="4dp"
+
+            app:layout_constraintStart_toEndOf="@id/thumbnail"
+            app:layout_constraintEnd_toStartOf="@id/lblFileName"
+            app:layout_constraintTop_toTopOf="@id/lblFileName"/>
+
+        <TextView
+            android:id="@+id/lblFileType"
+            style="@style/LabelCaptionStyle"
+            android:text="@string/file_type"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblFileName"/>
+
+        <TextView
+            android:id="@+id/txtFileType"
+            style="@style/TextCaptionStyle"
+            android:layout_width="0dp"
+            android:layout_marginEnd="4dp"
+
+            app:layout_constraintStart_toStartOf="@id/txtFileName"
+            app:layout_constraintEnd_toStartOf="@id/lblFileType"
+            app:layout_constraintTop_toTopOf="@id/lblFileType"/>
+
+        <TextView
+            android:id="@+id/lblRegisterDate"
+            style="@style/LabelCaptionStyle"
+            android:text="@string/register_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtFileType" />
+
+        <TextView
+            android:id="@+id/txtRegisterDate"
+            style="@style/TextCaptionStyle"
+            android:layout_width="0dp"
+            android:layout_marginEnd="4dp"
+
+            app:layout_constraintEnd_toStartOf="@id/lblRegisterDate"
+            app:layout_constraintStart_toStartOf="@id/txtFileName"
+            app:layout_constraintTop_toTopOf="@id/lblRegisterDate"/>
+
+        <TextView
+            android:id="@+id/lblDescription"
+            style="@style/LabelCaptionStyle"
+            android:text="@string/description1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtRegisterDate" />
+
+        <TextView
+            android:id="@+id/txtDescription"
+            style="@style/TextCaptionStyle"
+            android:layout_width="0dp"
+            android:layout_marginEnd="4dp"
+
+            app:layout_constraintStart_toStartOf="@id/txtFileName"
+            app:layout_constraintEnd_toStartOf="@id/lblDescription"
+            app:layout_constraintTop_toTopOf="@id/lblDescription"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/onSurface"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/txtDescription"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutDelete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_delete" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/delete"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textAppearanceCaption10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/img2" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutDownload"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:tint="@color/colorPrimary"
+                    app:srcCompat="@drawable/ic_download" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/download"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textAppearanceCaption10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/img1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

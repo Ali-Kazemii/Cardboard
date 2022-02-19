@@ -1,0 +1,3 @@
+rootProject.name = "CardboardModule"
+include ':app'
+include ':cardboard'

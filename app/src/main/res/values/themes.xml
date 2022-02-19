@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#00BCD4</item>
+        <item name="colorPrimaryDark">#00838F</item>
+        <item name="colorAccent">#FF9800</item>
+        <item name="android:fontFamily">@font/iran_sans</item>
+        <item name="android:layoutDirection">ltr</item>
+        <item name="colorControlActivated">#00BCD4</item>
+    </style>
+
+</resources>

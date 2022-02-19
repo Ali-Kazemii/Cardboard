@@ -1,0 +1,156 @@
+package ir.nik.cardboard.view.search
+
+import android.content.Intent
+import android.os.Bundle
+import android.view.inputmethod.EditorInfo
+import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.nik.cardboard.R
+import ir.awlrhm.modules.enums.MessageStatus
+import ir.awlrhm.modules.extentions.*
+import ir.nik.cardboard.data.network.model.request.CardboardInformationRequest
+import ir.nik.cardboard.data.network.model.request.CaseReadRequest
+import ir.nik.cardboard.utils.Const
+import ir.nik.cardboard.utils.cardboardInformationJson
+import ir.nik.cardboard.view.base.ChildActivity
+import ir.nik.cardboard.view.casedetail.CaseDetailActivity
+import ir.nik.cardboard.view.caselist.Adapter
+import ir.nik.cardboard.view.caselist.CaseListViewModel
+
+import kotlinx.android.synthetic.main.activity_search.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
+internal class SearchActivity : ChildActivity() {
+
+    private val viewModel by viewModel<CaseListViewModel>()
+    private var pageNumber = 1
+    private lateinit var adapter: Adapter
+
+    override fun setup() {
+        rclSearch.layoutManager(LinearLayoutManager(this@SearchActivity))
+        adapter = Adapter { result, isUnread ->
+            if (isUnread)
+                viewModel.postCaseRead(
+                    CaseReadRequest().also { request ->
+                        request.wfsCrId = result.wfsCrId
+                        request.userId = viewModel.userId
+                        request.financialYearId = viewModel.financialYear
+                        request.typeOperation = 1
+                    }
+                )
+            val intent = Intent(this@SearchActivity, CaseDetailActivity::class.java)
+            val bundle = Bundle()
+            bundle.putSerializable(Const.KEY_CARTABLE_INFO, result)
+            intent.putExtras(bundle)
+            startActivity(intent)
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setContentView(R.layout.activity_search)
+        super.onCreate(savedInstanceState)
+
+        edtSearch.requestFocus()
+        showKeyboard()
+
+        edtSearch.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH)
+                search()
+            true
+        }
+        btnBack.setOnClickListener {
+            if (edtSearch.text.isEmpty()) {
+                hideKeyboard(layoutSearch)
+                onBackPressed()
+            } else
+                onStatus(Status.SEARCH)
+
+        }
+        btnSearch.setOnClickListener { search() }
+
+        viewModel.listCaseResponse.observe(this, {
+            it.result?.let { list ->
+                if (list.size > 0) {
+                    adapter.setSource(list)
+                    rclSearch?.view?.adapter = adapter
+
+                } else
+                    onStatus(Status.FAILURE)
+            } ?: kotlin.run {
+                onStatus(Status.FAILURE)
+            }
+        })
+    }
+
+    private fun search() {
+        val search = edtSearch.text.toString()
+        if (search.isNotEmpty()) {
+            onStatus(Status.LOADING)
+            /*viewModel.search(
+                search,
+                viewModel.startDate,
+                viewModel.endDate,
+                0,
+                0,
+                0,
+                0,
+                "0",
+                viewModel.financialYear,
+                counter,
+                0
+            )*/
+            viewModel.getCardboardInformationList(
+                CardboardInformationRequest().also { request ->
+                    request.userId = viewModel.userId
+                    request.pageNumber = pageNumber
+                    request.financialYearId = viewModel.financialYear
+                    request.typeOperation = 101
+                    request.jsonParameters =
+                        cardboardInformationJson(
+                            startRange = viewModel.documentStartDate,
+                            endRange = viewModel.documentEndDate,
+                            documentStatusId = 0,
+                            wfsProcessId = 0,
+                            search = search
+                        )
+                }
+            )
+        } else
+            yToast(
+                getString(R.string.fill_search_key),
+                MessageStatus.ERROR
+            )
+    }
+
+    private fun onStatus(status: Status) {
+        when (status) {
+            Status.LOADING -> {
+                logoSearch.isVisible = false
+                rclSearch.isVisible = true
+                rclSearch.showLoading()
+            }
+            Status.FAILURE -> {
+                rclSearch.showNoData()
+            }
+            Status.SEARCH -> {
+                logoSearch.isVisible = true
+                rclSearch.isVisible = false
+                edtSearch.setText("")
+            }
+        }
+    }
+
+    override fun handleError() {
+        super.handleError()
+        viewModel.error.observe(this, {
+            onStatus(Status.FAILURE)
+            showError(it?.message)
+        })
+    }
+
+    enum class Status {
+        SEARCH,
+        LOADING,
+        FAILURE
+    }
+}

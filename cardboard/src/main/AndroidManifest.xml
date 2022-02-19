@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.nik.cardboard">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+
+        <activity
+            android:name="ir.nik.cardboard.view.cardboard.CardboardActivity"
+            android:exported="false" />
+        <activity
+            android:name="ir.nik.cardboard.view.gateway.GatewayActivity"
+            android:exported="false" />
+        <activity
+            android:name="ir.nik.cardboard.view.fastrefer.FastReferActivity"
+            android:exported="false" />
+        <activity
+            android:name="ir.nik.cardboard.view.casedetail.CaseDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name="ir.nik.cardboard.view.caselist.CaseListActivity"
+            android:exported="false" />
+        <activity
+            android:name="ir.nik.cardboard.view.createletter.CreateLetterActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name="ir.nik.cardboard.view.refer.ReferActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name="ir.nik.cardboard.view.search.SearchActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name="ir.nik.cardboard.view.attachment.AttachmentActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+    </application>
+
+</manifest>

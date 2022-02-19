@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="12dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <ProgressBar
+        android:id="@+id/prcReport"
+        android:layout_width="@dimen/progress"
+        android:layout_height="@dimen/progress"
+        android:layout_gravity="center"
+        android:theme="@style/progressBarAccent"
+        android:layout_marginTop="20dp"/>
+
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdfView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="4dp"
+        android:visibility="gone"/>
+
+    <include android:id="@+id/layoutNoData"
+        layout="@layout/awlrhm_layout_no_data"
+        android:visibility="gone"/>
+</FrameLayout>

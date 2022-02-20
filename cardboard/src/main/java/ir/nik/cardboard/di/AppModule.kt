@@ -42,7 +42,6 @@ val viewModelModules = module {
     viewModel { ReferViewModel(get(), get(), get()) }
     viewModel { CardboardViewModel(get(), get(), get()) }
     viewModel { AttachmentViewModel(get(), get(), get()) }
-
 }
 
 val listModule = arrayListOf(appModule, viewModelModules, networkModules)

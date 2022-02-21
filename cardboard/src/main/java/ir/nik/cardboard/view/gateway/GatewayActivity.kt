@@ -6,12 +6,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.nik.cardboard.R
 import ir.nik.cardboard.di.injectKoin
-import ir.nik.cardboard.utils.Const.KEY_CARDBOARD
 import ir.nik.cardboard.utils.Const.KEY_CASE_LIST
 import ir.nik.cardboard.view.base.PrivateViewModel
 import ir.nik.cardboard.view.cardboard.CardboardActivity
 import ir.nik.cardboard.view.gateway.model.CardboardBindDataModel
 import ir.nik.cardboard.view.gateway.model.CaseType
+import ir.nik.cardboard.view.gateway.model.KEY_CARDBOARD
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GatewayActivity : AppCompatActivity() {

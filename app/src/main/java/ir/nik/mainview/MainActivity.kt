@@ -5,9 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import ir.nik.cardboard.view.gateway.model.CardboardBindDataModel
 import ir.nik.cardboard.view.gateway.GatewayActivity
-import ir.nik.mainview.Constants.KEY_CARDBOARD
+import ir.nik.cardboard.view.gateway.model.CardboardBindDataModel
+import ir.nik.cardboard.view.gateway.model.KEY_CARDBOARD
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

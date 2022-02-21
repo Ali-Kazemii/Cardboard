@@ -26,6 +26,7 @@ import ir.nik.cardboard.view.casedetail.CaseDetailActivity
 import ir.nik.cardboard.view.createletter.CreateLetterActivity
 import ir.nik.cardboard.view.dialog.CaseFilterDialog
 import ir.nik.cardboard.view.dialog.NoteDialog
+import ir.nik.cardboard.view.gateway.model.CaseType
 import ir.nik.cardboard.view.refer.ReferActivity
 import ir.nik.cardboard.view.search.SearchActivity
 import kotlinx.android.synthetic.main.activity_case_list.*
@@ -78,6 +79,7 @@ internal class CaseListActivity : ChildActivity() {
         adapter?.clear()
         getCaseList()
     }
+
     private fun getCaseList() {
         when (model?.caseType) {
             CaseType.DOCUMENT ->

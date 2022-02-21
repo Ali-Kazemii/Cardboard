@@ -8,6 +8,7 @@ internal object Const {
     const val KEY_LOG_OUT= "logout"
 
     const val KEY_CARDBOARD = "card_board"
+    const val KEY_CASE_LIST = "case_list"
 
     const val KEY_IMEI = "imei"
     const val KEY_OS_VERSION = "os_version"

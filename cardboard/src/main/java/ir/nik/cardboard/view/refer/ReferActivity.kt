@@ -14,7 +14,6 @@ import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.utils.convertUTTWFSModelToJson
 import ir.nik.cardboard.view.base.ChildActivity
 import ir.nik.cardboard.view.cardboard.CardboardActivity
-import ir.nik.cardboard.view.caselist.CaseListActivity
 import kotlinx.android.synthetic.main.activity_refer.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

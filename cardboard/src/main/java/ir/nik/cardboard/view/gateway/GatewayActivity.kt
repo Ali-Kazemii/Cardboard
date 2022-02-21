@@ -7,8 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.nik.cardboard.R
 import ir.nik.cardboard.di.injectKoin
 import ir.nik.cardboard.utils.Const.KEY_CARDBOARD
+import ir.nik.cardboard.utils.Const.KEY_CASE_LIST
 import ir.nik.cardboard.view.base.PrivateViewModel
 import ir.nik.cardboard.view.cardboard.CardboardActivity
+import ir.nik.cardboard.view.gateway.model.CardboardBindDataModel
+import ir.nik.cardboard.view.gateway.model.CaseType
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GatewayActivity : AppCompatActivity() {
@@ -20,6 +23,7 @@ class GatewayActivity : AppCompatActivity() {
         const val LOG_OUT = 123321
     }
 
+    private var caseType: CaseType ?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,15 +48,19 @@ class GatewayActivity : AppCompatActivity() {
     }
 
     private fun gotoCardboard() {
-        startActivity(
-            Intent(this@GatewayActivity, CardboardActivity::class.java)
-        )
+        val intent = Intent(this@GatewayActivity, CardboardActivity::class.java)
+        val bundle = Bundle()
+        bundle.putSerializable(KEY_CASE_LIST, caseType)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
+
 
     private fun getInitValues() {
 
         val model = intent.getSerializableExtra(KEY_CARDBOARD) as CardboardBindDataModel
 
+        caseType = model.caseType
 
         viewModel.accessToken = model.token
 

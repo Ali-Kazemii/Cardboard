@@ -53,6 +53,7 @@
     <string name="letter_body">متن نامه</string>
     <string name="confidentiality">محرمانگی</string>
     <string name="sendType">نحوه ارسال</string>
+    <string name="sent">ارسال شده</string>
     <string name="letter_receiver">گیرنده نامه</string>
     <string name="priority">فوریت</string>
     <string name="letter_other_receiver">گیرنده متفرقه</string>

@@ -54,6 +54,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-        <include layout="@layout/contain_report"/>
+        <include layout="@layout/contain_case_detail_report"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

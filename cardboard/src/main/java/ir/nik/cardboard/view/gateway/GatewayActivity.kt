@@ -9,9 +9,11 @@ import ir.nik.cardboard.di.injectKoin
 import ir.nik.cardboard.utils.Const.KEY_CASE_LIST
 import ir.nik.cardboard.view.base.PrivateViewModel
 import ir.nik.cardboard.view.cardboard.CardboardActivity
+import ir.nik.cardboard.view.createletter.CreateLetterActivity
 import ir.nik.cardboard.view.gateway.model.CardboardBindDataModel
 import ir.nik.cardboard.view.gateway.model.CaseType
 import ir.nik.cardboard.view.gateway.model.KEY_CARDBOARD
+import kotlinx.android.synthetic.main.contain_letter_information.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GatewayActivity : AppCompatActivity() {
@@ -38,16 +40,28 @@ class GatewayActivity : AppCompatActivity() {
             setResult(Activity.RESULT_OK, intent)
             this@GatewayActivity.finish()
 
-        } else {
+        } else
             getInitValues()
 
-            gotoCardboard()
-        }
 
 
     }
 
-    private fun gotoCardboard() {
+    private fun chooseDirection() {
+        when(caseType){
+            CaseType.CREATE_LETTER ->{
+                gotoCreateLetter()
+            }
+            else ->
+                gotoCardboard()
+        }
+    }
+
+    private fun gotoCreateLetter() {
+        startActivity(Intent(this@GatewayActivity, CreateLetterActivity::class.java))
+    }
+
+    private fun gotoCardboard(){
         val intent = Intent(this@GatewayActivity, CardboardActivity::class.java)
         val bundle = Bundle()
         bundle.putSerializable(KEY_CASE_LIST, caseType)
@@ -79,5 +93,7 @@ class GatewayActivity : AppCompatActivity() {
         viewModel.deviceModel = model.deviceModel
 
         viewModel.appVersion = model.appVersion
+
+        chooseDirection()
     }
 }

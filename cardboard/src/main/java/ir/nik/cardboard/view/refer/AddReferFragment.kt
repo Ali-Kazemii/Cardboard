@@ -194,7 +194,7 @@ internal class AddReferFragment(
                                 txtProcessStep.text = response.result[0].wfsPsName
                                 processStepId = response.result[0].wfsPsId ?: 0
 
-                            } else if (response.result.size != 0)
+                            } else if (response.result.size != 0) {
                                 listProcessStep = mutableListOf<ItemModel>().apply {
                                     response.result.forEach { result ->
                                         val id = result.wfsPsId ?: -1
@@ -203,8 +203,9 @@ internal class AddReferFragment(
                                             add(ItemModel(id, name))
                                     }
                                 }
+                                showProcessStep()
+                            }
                         }
-                        showProcessStep()
                     }
                 } ?: kotlin.run {
                     txtProcessStep.text = "داده ای برای نمایش وجود ندارد"
@@ -243,7 +244,7 @@ internal class AddReferFragment(
                         txtDocumentNature.text = "داده ای برای نمایش وجود ندارد"
                     else {
                         listDocumentNature = mutableListOf<ItemModel>().apply {
-                          list.forEach { result ->
+                            list.forEach { result ->
                                 val id = result.baseId ?: -1
                                 val name = result.baseName ?: ""
                                 if (id != -1L)
@@ -274,16 +275,16 @@ internal class AddReferFragment(
                     )
                 }
             )
-        }else
+        } else
             showProcessStep()
     }
 
     private fun showProcessStep() {
         val activity = activity ?: return
-            ChooseDialog(listProcessStep) {
-                processStepId = it.id
-                txtProcessStep.text = it.title
-            }.show(activity.supportFragmentManager, ChooseDialog.TAG)
+        ChooseDialog(listProcessStep) {
+            processStepId = it.id
+            txtProcessStep.text = it.title
+        }.show(activity.supportFragmentManager, ChooseDialog.TAG)
     }
 
 
@@ -305,10 +306,10 @@ internal class AddReferFragment(
     private fun showPriority() {
         val activity = activity ?: return
 
-            ChooseDialog(listDocumentPriority) {
-                priorityId = it.id
-                txtPriority.text = it.title
-            }.show(activity.supportFragmentManager, ChooseDialog.TAG)
+        ChooseDialog(listDocumentPriority) {
+            priorityId = it.id
+            txtPriority.text = it.title
+        }.show(activity.supportFragmentManager, ChooseDialog.TAG)
     }
 
     private fun getDocumentNature() {
@@ -322,17 +323,17 @@ internal class AddReferFragment(
                     request.jsonParameters = baseTypeJson(Const.BaseType.REFER_NATURE)
                 }
             )
-        }else
+        } else
             showDocumentNature()
     }
 
     private fun showDocumentNature() {
         val activity = activity ?: return
 
-            ChooseDialog(listDocumentNature) {
-                referNatureId = it.id
-                txtDocumentNature.text = it.title
-            }.show(activity.supportFragmentManager, ChooseDialog.TAG)
+        ChooseDialog(listDocumentNature) {
+            referNatureId = it.id
+            txtDocumentNature.text = it.title
+        }.show(activity.supportFragmentManager, ChooseDialog.TAG)
     }
 
 
@@ -353,10 +354,10 @@ internal class AddReferFragment(
 
     private fun showReferenceActionList() {
         val activity = activity ?: return
-            ChooseDialog(listReferenceAction) {
-                deliveryID = it.id
-                txtReferenceAction.text = it.title
-            }.show(activity.supportFragmentManager, ChooseDialog.TAG)
+        ChooseDialog(listReferenceAction) {
+            deliveryID = it.id
+            txtReferenceAction.text = it.title
+        }.show(activity.supportFragmentManager, ChooseDialog.TAG)
     }
 
     private fun getReferenceType() {
@@ -370,16 +371,16 @@ internal class AddReferFragment(
                     request.jsonParameters = referTypeJson()
                 }
             )
-        }else
+        } else
             showReferenceType()
     }
 
     private fun showReferenceType() {
         val activity = activity ?: return
-            ChooseDialog(listReference) {
-                referenceID = it.id
-                txtReferenceType.text = it.title
-            }.show(activity.supportFragmentManager, ChooseDialog.TAG)
+        ChooseDialog(listReference) {
+            referenceID = it.id
+            txtReferenceType.text = it.title
+        }.show(activity.supportFragmentManager, ChooseDialog.TAG)
     }
 
     private fun showSpeechDialog() {

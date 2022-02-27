@@ -10,7 +10,7 @@ import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.utils.Const.KEY_CARTABLE_INFO
 import ir.nik.cardboard.view.base.ChildActivity
 import ir.nik.cardboard.view.casedetail.detail.CaseDetailFragment
-import ir.nik.cardboard.view.casedetail.report.CaseDetailReport
+import ir.nik.cardboard.view.casedetail.report.CaseDetailReportFragment
 import ir.nik.cardboard.view.casedetail.timeline.CaseReferHistoryFragment
 import ir.nik.cardboard.view.refer.ReferActivity
 import kotlinx.android.synthetic.main.activity_case_detail.*
@@ -73,11 +73,11 @@ internal class CaseDetailActivity : ChildActivity() {
     private fun gotoCaseDetailReport(reportName: String?, wfsCrId: Long?) {
         addFragmentInActivity(
             R.id.container,
-            CaseDetailReport(
+            CaseDetailReportFragment(
                 reportName = reportName,
                 wfsCrId = wfsCrId
             ),
-            CaseDetailReport.TAG
+            CaseDetailReportFragment.TAG
         )
     }
 
@@ -104,12 +104,12 @@ internal class CaseDetailActivity : ChildActivity() {
     ) {
         addFragmentInActivity(
             R.id.container,
-            CaseDetailReport(
+            CaseDetailReportFragment(
                 reportName = reportName,
                 wfsCrId = wfsCrId,
                 wfsCaseId = wfsCaseId
             ),
-            CaseDetailReport.TAG
+            CaseDetailReportFragment.TAG
         )
     }
 

@@ -59,12 +59,12 @@ internal class ReferActivity : ChildActivity() {
 
             response.result?.let {
                 if(it != 0L){
-                    showFlashbar(
-                        getString(R.string.success),
+                    yToast(
                         response.message ?: getString(R.string.success_operation),
                         MessageStatus.SUCCESS
                     )
-                    gotoCaseList()
+//                    gotoCaseList()
+                    onBackPressed()
                 }else
                     failureOperation(response.message)
             }?: kotlin.run {
@@ -75,8 +75,8 @@ internal class ReferActivity : ChildActivity() {
 
     private fun gotoCaseList() {
         val intent = Intent(this@ReferActivity, CardboardActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-//        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+//        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
     }
 

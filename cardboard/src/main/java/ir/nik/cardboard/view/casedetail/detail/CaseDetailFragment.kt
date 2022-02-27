@@ -25,8 +25,6 @@ import ir.nik.cardboard.view.casedetail.CaseDetailViewModel
 import ir.nik.cardboard.view.dialog.NoteDialog
 import kotlinx.android.synthetic.main.contain_case_detail.*
 import kotlinx.android.synthetic.main.fragment_case_detail.*
-import kotlinx.android.synthetic.main.fragment_case_detail.btnBack
-import kotlinx.android.synthetic.main.fragment_report.*
 import kotlinx.android.synthetic.main.item_information.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

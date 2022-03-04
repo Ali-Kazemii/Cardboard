@@ -58,18 +58,21 @@ internal class CaseDetailFragment(
     override fun handleObservers() {
         val activity = activity ?: return
 
-        viewModel.caseInformationResponse.observe(this, {
+        viewModel.caseInformationResponse.observe(this, { response ->
             actionLoading.isVisible = false
 
-            it.result?.let { list ->
-                val data = list[0].textMember
-                if (data.isNullOrEmpty())
-                    activity.showError(getString(R.string.no_data))
-                else {
-                    initDataLayout(data)
+            response.result?.let { list ->
+                if(list.isNotEmpty()) {
+                    val data = list[0].textMember
+                    if (data.isNullOrEmpty())
+                        activity.showError(response.message)
+                    else {
+                        initDataLayout(data)
 
-                    callReport()
-                }
+                        callReport()
+                    }
+                }else
+                    activity.showError(response.message)
             }
         })
 

@@ -18,11 +18,11 @@ import ir.nik.cardboard.utils.caseDetailBodyJson
 import ir.nik.cardboard.utils.historyReportJson
 import ir.nik.cardboard.view.base.BaseFragment
 import ir.nik.cardboard.view.casedetail.CaseDetailViewModel
-import kotlinx.android.synthetic.main.contain_report.*
-import kotlinx.android.synthetic.main.fragment_report.*
+import kotlinx.android.synthetic.main.contain_case_detail_report.*
+import kotlinx.android.synthetic.main.fragment_case_detail_report.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CaseDetailReport(
+class CaseDetailReportFragment(
     private val reportName: String?
 ): BaseFragment(), OnPageErrorListener {
 
@@ -61,7 +61,7 @@ class CaseDetailReport(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_report,container, false)
+        return inflater.inflate(R.layout.fragment_case_detail_report,container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -156,7 +156,7 @@ class CaseDetailReport(
     }
 
     companion object {
-        val TAG = "${Const.APP_NAME}: ${CaseDetailReport::class.java.simpleName}"
+        val TAG = "${Const.APP_NAME}: ${CaseDetailReportFragment::class.java.simpleName}"
     }
 
 }

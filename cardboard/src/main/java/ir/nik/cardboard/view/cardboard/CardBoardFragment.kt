@@ -7,15 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import com.nik.cardboard.R
+import ir.awlrhm.modules.enums.MessageStatus
 import ir.awlrhm.modules.extentions.showError
+import ir.awlrhm.modules.view.ActionDialog
 import ir.nik.cardboard.data.network.model.base.BaseGetRequest
 import ir.nik.cardboard.utils.Const
+import ir.nik.cardboard.utils.SSID
 import ir.nik.cardboard.utils.cardboardListJson
 import ir.nik.cardboard.view.base.BaseFragment
 import ir.nik.cardboard.view.dialog.CaseFilterDialog
 import kotlinx.android.synthetic.main.contain_cardboard.*
 import kotlinx.android.synthetic.main.fragment_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.lang.StringBuilder
 
 internal class CardBoardFragment(
     private val callback: (ssId: Long, name: String) -> Unit
@@ -36,6 +40,8 @@ internal class CardBoardFragment(
         super.onViewCreated(view, savedInstanceState)
     }
 
+
+    private var bannerClickCount = 0
     override fun handleOnClickListeners() {
         val activity = activity ?: return
 
@@ -49,6 +55,29 @@ internal class CardBoardFragment(
             }.show(activity.supportFragmentManager, CaseFilterDialog.TAG)
         }
 
+        imgBanner.setOnClickListener {
+            bannerClickCount = bannerClickCount.plus(1)
+            if(bannerClickCount < 5)
+                return@setOnClickListener
+
+            val str = StringBuilder()
+            str.append("SSId: ${SSID}\n")
+            str.append("UserId: ${viewModel.userId}\n")
+            str.append("personnelId: ${viewModel.personnelId}\n")
+            str.append("imei: ${viewModel.imei}\n")
+            str.append("financialYear: ${viewModel.financialYear}\n")
+            str.append("financialYear: ${viewModel.financialYear}\n")
+            str.append("startDate: ${viewModel.documentStartDate}, endDate: ${viewModel.documentEndDate}\n\n")
+            str.append("Autentication: ${viewModel.accessToken}\n")
+            ActionDialog.Builder()
+                .setTitle("Params:")
+                .setAction(MessageStatus.INFORMATION)
+                .setDescription(str.toString())
+                .build()
+                .show(activity.supportFragmentManager, ActionDialog.TAG)
+
+            bannerClickCount = 0
+        }
     }
 
     override fun handleObservers() {

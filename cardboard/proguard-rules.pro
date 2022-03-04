@@ -17,6 +17,7 @@
 -keep class ir.nik.cardboard.data.network.model.request.** { *; }
 -keep class ir.nik.cardboard.data.network.model.response.** { *; }
 -keep class ir.nik.cardboard.view.gateway.model.** { *; }
+-keep class ir.nik.cardboard.data.network.model.utt.** { *; }
 ##-------------------------------------------------------------------------------------
 
 #begin Retrofit------------------------------------------------------------------------

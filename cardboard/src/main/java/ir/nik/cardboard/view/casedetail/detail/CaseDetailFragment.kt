@@ -90,10 +90,12 @@ internal class CaseDetailFragment(
 
         viewModel.responseId.observe(this, { response ->
             response.result?.let {
-                if (it != 0L)
+                if (it != 0L) {
                     activity.successOperation(
                         response.message ?: getString(R.string.success_operation)
                     )
+                    activity.onBackPressed()
+                }
                 else
                     activity.failureOperation(response.message)
             } ?: kotlin.run {

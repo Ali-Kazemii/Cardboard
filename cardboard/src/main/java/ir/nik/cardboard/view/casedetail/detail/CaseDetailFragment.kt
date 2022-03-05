@@ -324,6 +324,10 @@ internal class CaseDetailFragment(
         viewModel.errorBody.observe(viewLifecycleOwner, {
             prcReport.isVisible = false
         })
+
+        viewModel.errorPostCaseRefer.observe(this, {
+            activity?.showError(it?.message)
+        })
     }
 
 

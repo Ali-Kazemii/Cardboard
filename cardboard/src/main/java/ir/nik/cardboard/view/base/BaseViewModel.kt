@@ -86,7 +86,6 @@ internal open class BaseViewModel() : ViewModel() {
 
 
 
-
     fun getReferNature(
         request: BaseTypeRequest
     ) {

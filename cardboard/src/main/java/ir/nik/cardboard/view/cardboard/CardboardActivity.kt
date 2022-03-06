@@ -25,18 +25,17 @@ internal class CardboardActivity : AppCompatActivity() {
 
         val caseType = intent.extras?.getSerializable(KEY_CASE_LIST) as CaseType
         when (caseType) {
-
-            //سایر موارد
-            CaseType.DOCUMENT ->
-                gotoCardboardFragment(
-                    caseType = caseType
-                )
-
             // ارسال شده
             CaseType.SENT ->
                 gotoCaseListActivity(
                     ssId = 0,
                     name = getString(R.string.sent),
+                    caseType = caseType
+                )
+
+            //سایر موارد
+           else ->
+                gotoCardboardFragment(
                     caseType = caseType
                 )
         }

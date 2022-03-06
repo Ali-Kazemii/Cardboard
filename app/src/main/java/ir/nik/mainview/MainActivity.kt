@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import ir.nik.cardboard.view.gateway.GatewayActivity
 import ir.nik.cardboard.view.gateway.model.CardboardBindDataModel
+import ir.nik.cardboard.view.gateway.model.CaseType
 import ir.nik.cardboard.view.gateway.model.KEY_CARDBOARD
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -40,7 +41,8 @@ class MainActivity : AppCompatActivity() {
             imei = imei,
             osVersion = osVersion,
             deviceModel = deviceModel,
-            appVersion = appVersion
+            appVersion = appVersion,
+            CaseType.SENT
         )
 
         bundle.putSerializable(KEY_CARDBOARD, cardboardModel)

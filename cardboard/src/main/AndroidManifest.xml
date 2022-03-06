@@ -19,6 +19,7 @@
         <activity
             android:name="ir.nik.cardboard.view.cardboard.CardboardActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:noHistory="true"
             android:exported="false" />
         <activity
             android:name="ir.nik.cardboard.view.gateway.GatewayActivity"

@@ -23,10 +23,16 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 internal class SearchActivity : CardboardChildActivity() {
 
     private val viewModel by viewModel<CardboardCaseListViewModel>()
-    private var pageNumber = 1
     private lateinit var adapter: CardboardAdapter
 
+    private var pageNumber = 1
+    private var documentSsId: Long?= null
+
+
+
     override fun setup() {
+         documentSsId = intent.extras?.getLong(Const.KEY_DOCUMENT_SSID)
+
         rclSearch.layoutManager(LinearLayoutManager(this@SearchActivity))
         adapter = CardboardAdapter { result, isUnread ->
             if (isUnread)
@@ -86,19 +92,7 @@ internal class SearchActivity : CardboardChildActivity() {
         val search = edtSearch.text.toString()
         if (search.isNotEmpty()) {
             onStatus(Status.LOADING)
-            /*viewModel.search(
-                search,
-                viewModel.startDate,
-                viewModel.endDate,
-                0,
-                0,
-                0,
-                0,
-                "0",
-                viewModel.financialYear,
-                counter,
-                0
-            )*/
+
             viewModel.getCardboardInformationList(
                 CardboardInformationRequest().also { request ->
                     request.userId = viewModel.userId
@@ -109,7 +103,7 @@ internal class SearchActivity : CardboardChildActivity() {
                         cardboardInformationJson(
                             startRange = viewModel.documentStartDate,
                             endRange = viewModel.documentEndDate,
-                            documentStatusId = 0,
+                            documentStatusId = documentSsId,
                             wfsProcessId = 0,
                             search = search
                         )

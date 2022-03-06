@@ -139,7 +139,7 @@ internal fun caseReferHistoryJson(
 internal fun cardboardInformationJson(
     startRange: String,
     endRange: String,
-    documentStatusId: Long, // its same as CaseReferralStatus refer to سرویس های جدید معادل_14000822
+    documentStatusId: Long?, // its same as CaseReferralStatus refer to سرویس های جدید معادل_14000822
     wfsProcessId: Long,
     search: String
 ): String {

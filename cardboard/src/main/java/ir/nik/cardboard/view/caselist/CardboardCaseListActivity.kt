@@ -20,6 +20,7 @@ import ir.nik.cardboard.data.network.model.utt.CardboardUttWfsModel
 import ir.nik.cardboard.utils.*
 import ir.nik.cardboard.utils.Const.KEY_CARTABLE_INFO
 import ir.nik.cardboard.utils.Const.KEY_CASE_LIST_TYPE
+import ir.nik.cardboard.utils.Const.KEY_DOCUMENT_SSID
 import ir.nik.cardboard.utils.Const.KEY_REFER
 import ir.nik.cardboard.view.base.CardboardChildActivity
 import ir.nik.cardboard.view.casedetail.CardboardCaseDetailActivity
@@ -104,7 +105,7 @@ internal class CardboardCaseListActivity : CardboardChildActivity() {
                     cardboardInformationJson(
                         startRange = viewModel.documentStartDate,
                         endRange = viewModel.documentEndDate,
-                        documentStatusId = model?.documentStatusId ?: 0,
+                        documentStatusId = model?.documentSsId,
                         wfsProcessId = wfsProcessId,
                         search = ""
                     )
@@ -185,7 +186,11 @@ internal class CardboardCaseListActivity : CardboardChildActivity() {
             startActivity(Intent(this@CardboardCaseListActivity, CreateLetterActivity::class.java))
         }
         btnSearch.setOnClickListener {
-            startActivity(Intent(this@CardboardCaseListActivity, SearchActivity::class.java))
+            val intent = Intent(this@CardboardCaseListActivity, SearchActivity::class.java)
+            val bundle = Bundle()
+            bundle.putLong(KEY_DOCUMENT_SSID, model?.documentSsId?: 0)
+            intent.putExtras(bundle)
+            startActivity(intent)
         }
         btnFilter.setOnClickListener {
             getProcessStepList()
@@ -358,7 +363,7 @@ internal class CardboardCaseListActivity : CardboardChildActivity() {
                     request.financialYearId = viewModel.financialYear
                     request.typeOperation = 12
                     request.jsonParameters = processJson(
-                        documentStatusId = model?.documentStatusId ?: 0
+                        documentStatusId = model?.documentSsId ?: 0
                     )
                 }
             )

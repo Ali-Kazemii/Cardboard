@@ -24,6 +24,8 @@ internal object Const {
     const val KEY_START_DATE= "start_date"
     const val KEY_END_DATE= "end_date"
 
+    const val KEY_DOCUMENT_SSID= "document_ssid"
+
     const val KEY_CARTABLE_INFO= "card_board_info"
     const val KEY_REFER = "refer"
     const val KEY_CASE_LIST_TYPE = "case_list_type"

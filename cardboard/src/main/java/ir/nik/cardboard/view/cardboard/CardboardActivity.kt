@@ -35,7 +35,7 @@ internal class CardboardActivity : AppCompatActivity() {
             // ارسال شده
             CaseType.SENT ->
                 gotoCaseListActivity(
-                    id = 0,
+                    ssId = 0,
                     name = getString(R.string.sent),
                     caseType = caseType
                 )
@@ -50,7 +50,7 @@ internal class CardboardActivity : AppCompatActivity() {
             R.id.container,
             CardBoardFragment { ssId, name ->
                 gotoCaseListActivity(
-                    id = ssId,
+                    ssId = ssId,
                     name = name,
                     caseType = caseType
                 )
@@ -60,7 +60,7 @@ internal class CardboardActivity : AppCompatActivity() {
     }
 
     private fun gotoCaseListActivity(
-        id: Long,
+        ssId: Long,
         name: String,
         caseType: CaseType
     ) {
@@ -69,7 +69,7 @@ internal class CardboardActivity : AppCompatActivity() {
         bundle.putSerializable(
             Const.KEY_CASE_LIST_TYPE,
             CardboardCaseListModel().also { model ->
-                model.documentStatusId = id
+                model.documentSsId = ssId
                 model.caseName = name
                 model.statusReference = CaseListType.KEY_ALL
                 model.caseType = caseType

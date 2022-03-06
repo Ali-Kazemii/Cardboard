@@ -5,7 +5,7 @@ import ir.nik.cardboard.view.gateway.model.CaseType
 import java.io.Serializable
 
 class CardboardCaseListModel: Serializable{
-    var documentStatusId: Long?= null
+    var documentSsId: Long?= null
     var caseName: String?= null
     var statusReference: CaseListType = CaseListType.KEY_ALL
     var caseType: CaseType = CaseType.DOCUMENT

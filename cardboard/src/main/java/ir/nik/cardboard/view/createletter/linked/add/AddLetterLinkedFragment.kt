@@ -12,13 +12,13 @@ import ir.awlrhm.modules.extentions.*
 import ir.awlrhm.modules.models.ItemModel
 import ir.awlrhm.modules.utils.OnStatusListener
 import ir.awlrhm.modules.view.ChooseDialog
-import ir.nik.cardboard.data.network.model.request.DocumentRelationTypeRequest
-import ir.nik.cardboard.data.network.model.request.PostCaseLinkedListJsonRequest
-import ir.nik.cardboard.data.network.model.request.UserLetterListRequest
+import ir.nik.cardboard.data.network.model.request.CardboardDocumentRelationTypeRequest
+import ir.nik.cardboard.data.network.model.request.CardboardPostCaseLinkedListJsonRequest
+import ir.nik.cardboard.data.network.model.request.CardboardUserLetterListRequest
 import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.utils.documentRelationTypeJson
 import ir.nik.cardboard.utils.getLetterLinkedJson
-import ir.nik.cardboard.view.base.BaseFragment
+import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.createletter.CreateLetterViewModel
 import kotlinx.android.synthetic.main.contain_letter_linked.*
 import kotlinx.android.synthetic.main.fragment_letter_add_linked.*
@@ -26,7 +26,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class AddLetterLinkedFragment(
     private var wfsCaseId: Long
-) : BaseFragment(), OnStatusListener {
+) : CardboardBaseFragment(), OnStatusListener {
 
     private val viewModel by viewModel<CreateLetterViewModel>()
 
@@ -109,7 +109,7 @@ internal class AddLetterLinkedFragment(
             if (relationTypeId != 0L) {
                 onStatus(Status.LOADING)
                 viewModel.postCaseLinkedListWithJson(
-                    PostCaseLinkedListJsonRequest().also { request ->
+                    CardboardPostCaseLinkedListJsonRequest().also { request ->
                         request.wfsCaseId = wfsCaseId
                         request.financialYearId = viewModel.financialYear
                         request.json = getLetterLinkedJson(
@@ -129,7 +129,7 @@ internal class AddLetterLinkedFragment(
         if (listRelationType.isEmpty()) {
             spRelationType.loading(true)
             viewModel.getDocumentRelationTypeList(
-                DocumentRelationTypeRequest().also { request ->
+                CardboardDocumentRelationTypeRequest().also { request ->
                     request.userId = viewModel.userId
                     request.financialYearId = viewModel.financialYear
                     request.typeOperation = 10
@@ -156,7 +156,7 @@ internal class AddLetterLinkedFragment(
         if (listLetters.isEmpty()) {
             spLetters.loading(true)
             viewModel.getUserLetterList(
-                UserLetterListRequest().also { request ->
+                CardboardUserLetterListRequest().also { request ->
                     request.userId = viewModel.userId
                     request.financialYearId = viewModel.financialYear
                     request.typeOperation = 14

@@ -10,19 +10,19 @@ import ir.awlrhm.modules.enums.MessageStatus
 import ir.awlrhm.modules.extentions.failureOperation
 import ir.awlrhm.modules.extentions.showError
 import ir.awlrhm.modules.extentions.showFlashbar
-import ir.nik.cardboard.data.network.model.response.DraftLetterResponse
+import ir.nik.cardboard.data.network.model.response.CardboardDraftLetterResponse
 import ir.nik.cardboard.utils.Const
-import ir.nik.cardboard.view.base.BaseFragment
+import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.createletter.CreateLetterViewModel
 import kotlinx.android.synthetic.main.fragment_letter_step.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class LetterStepFragment(
     private val callback: (String) -> Unit
-) : BaseFragment() {
+) : CardboardBaseFragment() {
 
     constructor(
-        model: DraftLetterResponse.Result?,
+        model: CardboardDraftLetterResponse.Result?,
         callback: (String) -> Unit
     ) : this(callback) {
         this.model = model
@@ -30,7 +30,7 @@ internal class LetterStepFragment(
 
     private val viewModel by viewModel<CreateLetterViewModel>()
 
-    private var model: DraftLetterResponse.Result? = null
+    private var model: CardboardDraftLetterResponse.Result? = null
     private var letterId: Long = 0
     private var listStep: List<StepModel> = mutableListOf()
 

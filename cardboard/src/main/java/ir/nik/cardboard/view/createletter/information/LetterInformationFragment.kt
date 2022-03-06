@@ -18,13 +18,13 @@ import ir.awlrhm.modules.view.Spinner
 import ir.awlrhm.modules.view.searchablePagingDialog.DialogStatus
 import ir.awlrhm.modules.view.searchablePagingDialog.SearchablePagingDialog
 import ir.nik.cardboard.data.network.model.request.*
-import ir.nik.cardboard.data.network.model.response.LetterByIdResponse
-import ir.nik.cardboard.data.network.model.response.UserListResponse
+import ir.nik.cardboard.data.network.model.response.CardboardLetterByIdResponse
+import ir.nik.cardboard.data.network.model.response.CardboardUserListResponse
 import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.utils.baseTypeJson
 import ir.nik.cardboard.utils.documentSendReceiveMethodJson
 import ir.nik.cardboard.utils.letterInformationJson
-import ir.nik.cardboard.view.base.BaseFragment
+import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.createletter.CreateLetterViewModel
 import kotlinx.android.synthetic.main.contain_letter_information.*
 import kotlinx.android.synthetic.main.fragment_letter_information.*
@@ -32,7 +32,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class LetterInformationFragment(
     private val callback: (Int, Long) -> Unit,
-) : BaseFragment(), OnStatusListener {
+) : CardboardBaseFragment(), OnStatusListener {
 
     constructor(
         letterId: Long,
@@ -46,7 +46,7 @@ internal class LetterInformationFragment(
     private var userStatus: UserStatus? = null
     private var letterStatus: LetterStatus = LetterStatus.INTERNAL
 
-    private lateinit var userDialog: SearchablePagingDialog<UserListResponse.Result>
+    private lateinit var userDialog: SearchablePagingDialog<CardboardUserListResponse.Result>
     private var userDialogStatus = DialogStatus.CLICKED
 
     private var listSecretariat: MutableList<ItemModel> = mutableListOf()
@@ -67,7 +67,7 @@ internal class LetterInformationFragment(
             if (id != 0L) {
                 waitLoading(true)
                 viewModel.getLetterById(
-                    LetterByIdRequest().also { request ->
+                    CardboardLetterByIdRequest().also { request ->
                         request.oasLetterId = id
                         request.userId = viewModel.userId
                         request.financialYearId = viewModel.financialYear
@@ -78,8 +78,8 @@ internal class LetterInformationFragment(
         }
 
         userDialog = SearchablePagingDialog(
-            object : SearchablePagingDialog.OnActionListener<UserListResponse.Result> {
-                override fun onChoose(model: DynamicModel<UserListResponse.Result>) {
+            object : SearchablePagingDialog.OnActionListener<CardboardUserListResponse.Result> {
+                override fun onChoose(model: DynamicModel<CardboardUserListResponse.Result>) {
                     when (userStatus) {
                         UserStatus.SENDER -> {
                             spLetterSender.loading(false)
@@ -99,7 +99,7 @@ internal class LetterInformationFragment(
 
                 override fun onSearchPaging(pageNumber: Int, search: String) {
                     viewModel.getUserList(
-                        UserDataRequest().also { request ->
+                        CardboardUserDataRequest().also { request ->
                             request.userId = viewModel.userId
                             request.registerUserId = viewModel.userId
                             request.typeOperation = 105
@@ -131,7 +131,7 @@ internal class LetterInformationFragment(
             if (isValid) {
                 onStatus(Status.LOADING)
                 viewModel.postLetter(
-                    PostLetterRequest().also { request ->
+                    CardboardPostLetterRequest().also { request ->
                         request.letterId = this.letterId
                         request.secretariatId = this.secretariatId
                         request.formId = this.formId
@@ -292,7 +292,7 @@ internal class LetterInformationFragment(
             response.result?.let { list ->
                 if (list.isNotEmpty()) {
                     val listUser =
-                        mutableListOf<DynamicModel<UserListResponse.Result>>()
+                        mutableListOf<DynamicModel<CardboardUserListResponse.Result>>()
                     listUser.also { listModel ->
                         list.forEach { item ->
                             listModel.add(
@@ -343,7 +343,7 @@ internal class LetterInformationFragment(
     }
 
     private fun setEditValue(
-        model: LetterByIdResponse.Result
+        model: CardboardLetterByIdResponse.Result
     ) {
         this.letterId = model.letterId
         this.formId = model.formId
@@ -390,7 +390,7 @@ internal class LetterInformationFragment(
                 spReceivedType.loading(true)
 
             viewModel.getDocumentSendReceiveMethod(
-                DocumentSendReceiveMethodRequest().also { request ->
+                CardboardDocumentSendReceiveMethodRequest().also { request ->
                     request.userId = viewModel.userId
                     request.financialYearId = viewModel.financialYear
                     request.typeOperation = 10
@@ -429,7 +429,7 @@ internal class LetterInformationFragment(
             else -> {spLetterReceiver.loading(true)}
         }
         viewModel.getUserList(
-            UserDataRequest().also { request ->
+            CardboardUserDataRequest().also { request ->
                 request.userId = viewModel.userId
                 request.registerUserId = viewModel.userId
                 request.typeOperation = 105
@@ -445,7 +445,7 @@ internal class LetterInformationFragment(
         if (listPriority.isEmpty()) {
             spPriority.loading(false)
             viewModel.getPriority(
-                BaseTypeRequest().also { request ->
+                CardboardBaseTypeRequest().also { request ->
                     request.userId = viewModel.userId
                     request.typeOperation = 10
                     request.financialYearId = viewModel.financialYear
@@ -471,7 +471,7 @@ internal class LetterInformationFragment(
         if (listAccessType.isEmpty()) {
             spAccessType.loading(true)
             viewModel.getAccessTypeList(
-                AccessTypeListRequest().also { request ->
+                CardboardAccessTypeListRequest().also { request ->
                     request.userId = viewModel.userId
                     request.financialYearId = viewModel.financialYear
                     request.typeOperation = 15
@@ -496,7 +496,7 @@ internal class LetterInformationFragment(
         if (listSecretariat.isEmpty()) {
             spSecretariat.loading(true)
             viewModel.getSecretariatList(
-                SecretariatRequest().also { request ->
+                CardboardSecretariatRequest().also { request ->
                     request.userId = viewModel.userId
                     request.financialYearId = viewModel.financialYear
                     request.typeOperation = 11

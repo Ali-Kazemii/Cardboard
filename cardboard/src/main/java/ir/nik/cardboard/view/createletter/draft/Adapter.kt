@@ -5,11 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nik.cardboard.R
-import ir.nik.cardboard.data.network.model.response.DraftLetterResponse
+import ir.nik.cardboard.data.network.model.response.CardboardDraftLetterResponse
 import kotlinx.android.synthetic.main.item_letter_draft.view.*
 
 internal class Adapter(
-    private val list: List<DraftLetterResponse.Result>,
+    private val list: List<CardboardDraftLetterResponse.Result>,
     private val listener: OnActionListener
 ) : RecyclerView.Adapter<Adapter.CustomViewHolder>() {
 
@@ -25,7 +25,7 @@ internal class Adapter(
     override fun getItemCount(): Int = list.size
 
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun onBind(model: DraftLetterResponse.Result) {
+        fun onBind(model: CardboardDraftLetterResponse.Result) {
 
             arrangeTitle(model.letterTitle)?.let {
                 itemView.txtDraft.text = it
@@ -73,7 +73,7 @@ internal class Adapter(
     }
 
     interface OnActionListener {
-        fun onEdit(model: DraftLetterResponse.Result)
+        fun onEdit(model: CardboardDraftLetterResponse.Result)
         fun onDelete(letterId: Long)
         fun onLetterInformation(letterId: Long)
         fun onAttachment(letterId: Long)

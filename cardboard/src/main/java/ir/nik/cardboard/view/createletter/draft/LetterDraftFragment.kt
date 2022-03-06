@@ -13,19 +13,19 @@ import ir.awlrhm.modules.extentions.showError
 import ir.awlrhm.modules.extentions.successOperation
 import ir.awlrhm.modules.utils.OnStatusListener
 import ir.awlrhm.modules.view.ActionDialog
-import ir.nik.cardboard.data.network.model.request.DeleteLetterRequest
-import ir.nik.cardboard.data.network.model.request.DraftLetterRequest
-import ir.nik.cardboard.data.network.model.request.PostFinalSaveLetterRequest
-import ir.nik.cardboard.data.network.model.response.DraftLetterResponse
+import ir.nik.cardboard.data.network.model.request.CardboardDeleteLetterRequest
+import ir.nik.cardboard.data.network.model.request.CardboardDraftLetterRequest
+import ir.nik.cardboard.data.network.model.request.CardboardPostFinalSaveLetterRequest
+import ir.nik.cardboard.data.network.model.response.CardboardDraftLetterResponse
 import ir.nik.cardboard.utils.Const
-import ir.nik.cardboard.view.base.BaseFragment
+import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.createletter.CreateLetterViewModel
 import kotlinx.android.synthetic.main.fragment_letter_drafts.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class LetterDraftFragment(
     private val listener: OnActionListener
-) : BaseFragment(), OnStatusListener {
+) : CardboardBaseFragment(), OnStatusListener {
 
     private val viewModel by viewModel<CreateLetterViewModel>()
 
@@ -52,7 +52,7 @@ internal class LetterDraftFragment(
         if (!rclLetterDraft.isOnLoading)
         rclLetterDraft.showLoading()
         viewModel.getDraftLetterList(
-            DraftLetterRequest().also { request ->
+            CardboardDraftLetterRequest().also { request ->
                 request.userId = viewModel.userId
                 request.pageNumber = pageNumber
                 request.financialYearId = viewModel.financialYear
@@ -80,7 +80,7 @@ internal class LetterDraftFragment(
                     rclLetterDraft.view?.adapter = Adapter(
                         list,
                         object : Adapter.OnActionListener {
-                            override fun onEdit(model: DraftLetterResponse.Result) {
+                            override fun onEdit(model: CardboardDraftLetterResponse.Result) {
                                 listener.onEdit(model)
                             }
 
@@ -91,7 +91,7 @@ internal class LetterDraftFragment(
                                     .setPositive(getString(R.string.yes)) {
                                         rclLetterDraft.actionLoading = true
                                         viewModel.deleteLetter(
-                                            DeleteLetterRequest().also { request ->
+                                            CardboardDeleteLetterRequest().also { request ->
                                                 request.letterId = letterId
                                                 request.userId = viewModel.userId
                                                 request.financialYearId = viewModel.financialYear
@@ -129,7 +129,7 @@ internal class LetterDraftFragment(
                             override fun onLetterSend(letterId: Long) {
                                 rclLetterDraft.actionLoading = true
                                 viewModel.postFinalSaveLetter(
-                                    PostFinalSaveLetterRequest().also { request ->
+                                    CardboardPostFinalSaveLetterRequest().also { request ->
                                         request.oasLetterId = letterId
                                         request.userId = viewModel.userId
                                         request.financialYearId = viewModel.financialYear
@@ -196,7 +196,7 @@ internal class LetterDraftFragment(
 
     interface OnActionListener {
         fun onAdd()
-        fun onEdit(model: DraftLetterResponse.Result)
+        fun onEdit(model: CardboardDraftLetterResponse.Result)
         fun onLetterInformation(letterId: Long)
         fun onAttachment(letterId: Long)
         fun onReceivers(wfsCaseId: Long)

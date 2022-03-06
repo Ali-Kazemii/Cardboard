@@ -9,13 +9,13 @@ import ir.awlrhm.modules.extentions.failureOperation
 import ir.awlrhm.modules.extentions.replaceFragmentInActivity
 import ir.awlrhm.modules.extentions.showError
 import ir.awlrhm.modules.extentions.showFlashbar
-import ir.nik.cardboard.data.network.model.request.PostFinalSaveLetterRequest
-import ir.nik.cardboard.data.network.model.response.CaseReferralListByWFSCaseIdResponse
-import ir.nik.cardboard.data.network.model.response.DraftLetterResponse
+import ir.nik.cardboard.data.network.model.request.CardboardPostFinalSaveLetterRequest
+import ir.nik.cardboard.data.network.model.response.CardboardCaseReferralListByWFSCaseIdResponse
+import ir.nik.cardboard.data.network.model.response.CardboardDraftLetterResponse
 import ir.nik.cardboard.utils.Const
-import ir.nik.cardboard.view.attachment.AttachmentActivity
-import ir.nik.cardboard.view.attachment.AttachmentType
-import ir.nik.cardboard.view.base.BaseActivity
+import ir.nik.cardboard.view.attachment.CardboardAttachmentActivity
+import ir.nik.cardboard.view.attachment.CardboardAttachmentType
+import ir.nik.cardboard.view.base.CardboardBaseActivity
 import ir.nik.cardboard.view.createletter.draft.LetterDraftFragment
 import ir.nik.cardboard.view.createletter.extra.LetterExtraInformationFragment
 import ir.nik.cardboard.view.createletter.information.LetterInformationFragment
@@ -27,7 +27,7 @@ import ir.nik.cardboard.view.createletter.step.LetterStepFragment
 import kotlinx.android.synthetic.main.activity_create_letter.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-internal class CreateLetterActivity : BaseActivity() {
+internal class CreateLetterActivity : CardboardBaseActivity() {
 
     private val viewModel by viewModel<CreateLetterViewModel>()
 
@@ -35,7 +35,7 @@ internal class CreateLetterActivity : BaseActivity() {
     private var customerId: Long = 0
     private var wfsCaseId: Long = 0
     private var letterId: Long = 0
-    private var letterEditModel: DraftLetterResponse.Result? = null
+    private var letterEditModel: CardboardDraftLetterResponse.Result? = null
     private var isEditMode: Boolean = false
 
 
@@ -79,7 +79,7 @@ internal class CreateLetterActivity : BaseActivity() {
                         gotoSteps()
                     }
 
-                    override fun onEdit(model: DraftLetterResponse.Result) {
+                    override fun onEdit(model: CardboardDraftLetterResponse.Result) {
                         wfsCaseId = model.wfsCaseId ?: 0
                         letterId = model.letterId ?: 0
                         formId = model.formId ?: 0
@@ -147,7 +147,7 @@ internal class CreateLetterActivity : BaseActivity() {
     private fun sendLetter() {
         actionLoading.isVisible = true
         viewModel.postFinalSaveLetter(
-            PostFinalSaveLetterRequest().also { request ->
+            CardboardPostFinalSaveLetterRequest().also { request ->
                 request.oasLetterId = letterId
                 request.userId = viewModel.userId
                 request.financialYearId = viewModel.financialYear
@@ -157,14 +157,14 @@ internal class CreateLetterActivity : BaseActivity() {
     }
 
     private fun gotoAttachment(letterId: Long) {
-        val intent = Intent(this@CreateLetterActivity, AttachmentActivity::class.java)
+        val intent = Intent(this@CreateLetterActivity, CardboardAttachmentActivity::class.java)
         val bundle = Bundle()
         bundle.putLong(Const.KEY_DC_ID, Const.Letter.KEY_LETTER_DC_ID)
         bundle.putLong(Const.KEY_RELATED_TABLE_ID, letterId)
         bundle.putString(Const.KEY_RELATED_TABLE_NAME, Const.LetterTableName.LETTER)
         bundle.putSerializable(
             Const.KEY_ATTACHMENT_TYPE,
-            AttachmentType.WITH_ADD_ATTACHMENT
+            CardboardAttachmentType.WITH_ADD_ATTACHMENT
         )
         intent.putExtras(bundle)
         startActivity(intent)
@@ -245,7 +245,7 @@ internal class CreateLetterActivity : BaseActivity() {
                         gotoAddLetterReceiver(wfsCaseId)
                     }
 
-                    override fun onEdit(model: CaseReferralListByWFSCaseIdResponse.Result) {
+                    override fun onEdit(model: CardboardCaseReferralListByWFSCaseIdResponse.Result) {
                         editLetterReceiver(model)
                     }
                 }
@@ -254,7 +254,7 @@ internal class CreateLetterActivity : BaseActivity() {
         )
     }
 
-    private fun editLetterReceiver(model: CaseReferralListByWFSCaseIdResponse.Result) {
+    private fun editLetterReceiver(model: CardboardCaseReferralListByWFSCaseIdResponse.Result) {
         replaceFragmentInActivity(
             R.id.container,
             AddLetterReceiverFragment(wfsCaseId, model),

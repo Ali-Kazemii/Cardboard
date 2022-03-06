@@ -26,27 +26,27 @@
             android:noHistory="true"
             android:exported="false" />
         <activity
-            android:name="ir.nik.cardboard.view.fastrefer.FastReferActivity"
+            android:name="ir.nik.cardboard.view.fastrefer.CardboardFastReferActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
-            android:name="ir.nik.cardboard.view.casedetail.CaseDetailActivity"
+            android:name="ir.nik.cardboard.view.casedetail.CardboardCaseDetailActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
-            android:name="ir.nik.cardboard.view.caselist.CaseListActivity"
+            android:name="ir.nik.cardboard.view.caselist.CardboardCaseListActivity"
             android:exported="false" />
         <activity
             android:name="ir.nik.cardboard.view.createletter.CreateLetterActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
-            android:name="ir.nik.cardboard.view.refer.ReferActivity"
+            android:name="ir.nik.cardboard.view.refer.CardboardReferActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
             android:name="ir.nik.cardboard.view.search.SearchActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
-            android:name="ir.nik.cardboard.view.attachment.AttachmentActivity"
+            android:name="ir.nik.cardboard.view.attachment.CardboardAttachmentActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
     </application>
 

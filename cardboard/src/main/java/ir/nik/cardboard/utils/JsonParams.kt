@@ -1,7 +1,7 @@
 package ir.nik.cardboard.utils
 
 import com.google.gson.Gson
-import ir.nik.cardboard.data.network.model.utt.UTTWFSModel
+import ir.nik.cardboard.data.network.model.utt.CardboardUttWfsModel
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -95,7 +95,7 @@ internal fun caseReferralListByWFSCaseId(
 }
 
 
-internal fun convertUTTWFSModelToJson(list: MutableList<UTTWFSModel>): String {
+internal fun convertUTTWFSModelToJson(list: MutableList<CardboardUttWfsModel>): String {
     val jsonArray = JSONArray()
     list.forEachIndexed { index, _ ->
         list[index].rowNum = index + 1

@@ -1,18 +1,18 @@
 package ir.nik.cardboard.di
 
 import ir.awlrhm.modules.utils.calendar.PersianCalendar
-import ir.nik.cardboard.data.local.PreferenceConfiguration
-import ir.nik.cardboard.data.network.api.ApiClient
-import ir.nik.cardboard.data.network.api.RemoteRepository
-import ir.nik.cardboard.view.attachment.AttachmentViewModel
-import ir.nik.cardboard.view.base.PrivateViewModel
+import ir.nik.cardboard.data.local.CardboardPreferenceConfiguration
+import ir.nik.cardboard.data.network.api.CardboardApiClient
+import ir.nik.cardboard.data.network.api.CardboardRemoteRepository
+import ir.nik.cardboard.view.attachment.CardboardAttachmentViewModel
+import ir.nik.cardboard.view.base.CardboardPrivateViewModel
 import ir.nik.cardboard.view.cardboard.CardboardViewModel
-import ir.nik.cardboard.view.casedetail.CaseDetailViewModel
-import ir.nik.cardboard.view.caselist.CaseListViewModel
+import ir.nik.cardboard.view.casedetail.CardboardCaseDetailViewModel
+import ir.nik.cardboard.view.caselist.CardboardCaseListViewModel
 import ir.nik.cardboard.view.createletter.CreateLetterViewModel
-import ir.nik.cardboard.view.dialogreceiver.ReceiverViewModel
-import ir.nik.cardboard.view.fastrefer.FastReferViewModel
-import ir.nik.cardboard.view.refer.ReferViewModel
+import ir.nik.cardboard.view.dialogreceiver.CardboardReceiverViewModel
+import ir.nik.cardboard.view.fastrefer.CardboardFastReferViewModel
+import ir.nik.cardboard.view.refer.CardboardReferViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
@@ -21,27 +21,27 @@ import org.koin.dsl.module
 val appModule = module {
     single { PersianCalendar() }
     single {
-        PreferenceConfiguration(
+        CardboardPreferenceConfiguration(
             androidContext()
         )
     }
 }
 
 val networkModules = module {
-    factory { ApiClient(get()).getInterface() }
-    single { RemoteRepository(androidContext(), get(), get()) }
+    factory { CardboardApiClient(get()).getInterface() }
+    single { CardboardRemoteRepository(androidContext(), get(), get()) }
 }
 
 val viewModelModules = module {
-    viewModel { PrivateViewModel(get()) }
-    viewModel { CaseDetailViewModel(get(), get(), get()) }
-    viewModel { CaseListViewModel(get(), get(), get()) }
-    viewModel { ReceiverViewModel(get(), get()) }
+    viewModel { CardboardPrivateViewModel(get()) }
+    viewModel { CardboardCaseDetailViewModel(get(), get(), get()) }
+    viewModel { CardboardCaseListViewModel(get(), get(), get()) }
+    viewModel { CardboardReceiverViewModel(get(), get()) }
     viewModel { CreateLetterViewModel(get(), get(), get()) }
-    viewModel { FastReferViewModel(get(), get()) }
-    viewModel { ReferViewModel(get(), get(), get()) }
+    viewModel { CardboardFastReferViewModel(get(), get()) }
+    viewModel { CardboardReferViewModel(get(), get(), get()) }
     viewModel { CardboardViewModel(get(), get(), get()) }
-    viewModel { AttachmentViewModel(get(), get(), get()) }
+    viewModel { CardboardAttachmentViewModel(get(), get(), get()) }
 }
 
 val listModule = arrayListOf(appModule, viewModelModules, networkModules)

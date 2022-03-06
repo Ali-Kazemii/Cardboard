@@ -9,36 +9,36 @@ import com.nik.cardboard.R
 import ir.awlrhm.modules.enums.MessageStatus
 import ir.awlrhm.modules.extentions.*
 import ir.nik.cardboard.data.network.model.request.CardboardInformationRequest
-import ir.nik.cardboard.data.network.model.request.CaseReadRequest
+import ir.nik.cardboard.data.network.model.request.CardboardCaseReadRequest
 import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.utils.cardboardInformationJson
-import ir.nik.cardboard.view.base.ChildActivity
-import ir.nik.cardboard.view.casedetail.CaseDetailActivity
-import ir.nik.cardboard.view.caselist.Adapter
-import ir.nik.cardboard.view.caselist.CaseListViewModel
+import ir.nik.cardboard.view.base.CardboardChildActivity
+import ir.nik.cardboard.view.casedetail.CardboardCaseDetailActivity
+import ir.nik.cardboard.view.caselist.CardboardAdapter
+import ir.nik.cardboard.view.caselist.CardboardCaseListViewModel
 
 import kotlinx.android.synthetic.main.activity_search.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-internal class SearchActivity : ChildActivity() {
+internal class SearchActivity : CardboardChildActivity() {
 
-    private val viewModel by viewModel<CaseListViewModel>()
+    private val viewModel by viewModel<CardboardCaseListViewModel>()
     private var pageNumber = 1
-    private lateinit var adapter: Adapter
+    private lateinit var adapter: CardboardAdapter
 
     override fun setup() {
         rclSearch.layoutManager(LinearLayoutManager(this@SearchActivity))
-        adapter = Adapter { result, isUnread ->
+        adapter = CardboardAdapter { result, isUnread ->
             if (isUnread)
                 viewModel.postCaseRead(
-                    CaseReadRequest().also { request ->
+                    CardboardCaseReadRequest().also { request ->
                         request.wfsCrId = result.wfsCrId
                         request.userId = viewModel.userId
                         request.financialYearId = viewModel.financialYear
                         request.typeOperation = 1
                     }
                 )
-            val intent = Intent(this@SearchActivity, CaseDetailActivity::class.java)
+            val intent = Intent(this@SearchActivity, CardboardCaseDetailActivity::class.java)
             val bundle = Bundle()
             bundle.putSerializable(Const.KEY_CARTABLE_INFO, result)
             intent.putExtras(bundle)

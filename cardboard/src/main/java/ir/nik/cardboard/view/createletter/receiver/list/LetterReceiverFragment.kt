@@ -13,12 +13,12 @@ import ir.awlrhm.modules.extentions.showError
 import ir.awlrhm.modules.utils.OnStatusListener
 import ir.awlrhm.modules.view.ActionDialog
 import ir.awlrhm.modules.view.RecyclerView
-import ir.nik.cardboard.data.network.model.request.CaseReferralListByWFSCaseIdRequest
-import ir.nik.cardboard.data.network.model.request.DeleteCaseReferRequest
-import ir.nik.cardboard.data.network.model.response.CaseReferralListByWFSCaseIdResponse
+import ir.nik.cardboard.data.network.model.request.CardboardCaseReferralListByWFSCaseIdRequest
+import ir.nik.cardboard.data.network.model.request.CardboardDeleteCaseReferRequest
+import ir.nik.cardboard.data.network.model.response.CardboardCaseReferralListByWFSCaseIdResponse
 import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.utils.caseReferralListByWFSCaseId
-import ir.nik.cardboard.view.base.BaseFragment
+import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.createletter.CreateLetterViewModel
 import kotlinx.android.synthetic.main.fragment_letter_receiver.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,7 +26,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 internal class LetterReceiverFragment(
     private val caseId: Long,
     private val listener: OnActionListener
-) : BaseFragment(), OnStatusListener {
+) : CardboardBaseFragment(), OnStatusListener {
 
     private val viewModel by viewModel<CreateLetterViewModel>()
 
@@ -60,7 +60,7 @@ internal class LetterReceiverFragment(
 
     private fun getReceivers() {
         viewModel.getCaseReferralListByWFSCaseId(
-            CaseReferralListByWFSCaseIdRequest().also { request ->
+            CardboardCaseReferralListByWFSCaseIdRequest().also { request ->
                 request.userId = viewModel.userId
                 request.financialYearId = viewModel.financialYear
                 request.pageNumber = pageNumber
@@ -82,7 +82,7 @@ internal class LetterReceiverFragment(
                     rclReceiver.view?.adapter = Adapter(
                         list,
                         object : Adapter.OnActionListener {
-                            override fun onEdit(model: CaseReferralListByWFSCaseIdResponse.Result) {
+                            override fun onEdit(model: CardboardCaseReferralListByWFSCaseIdResponse.Result) {
                                 listener.onEdit(model)
                             }
 
@@ -93,7 +93,7 @@ internal class LetterReceiverFragment(
                                     .setPositive(getString(R.string.yes)) {
                                         rclReceiver .actionLoading = true
                                         viewModel.deleteCaseRefer(
-                                            DeleteCaseReferRequest().also { request ->
+                                            CardboardDeleteCaseReferRequest().also { request ->
                                                 request.wfsCrId = crId
                                                 request.userId = viewModel.userId
                                                 request.financialYearId = viewModel.financialYear
@@ -163,7 +163,7 @@ internal class LetterReceiverFragment(
 
     interface OnActionListener {
         fun onAdd()
-        fun onEdit(model: CaseReferralListByWFSCaseIdResponse.Result)
+        fun onEdit(model: CardboardCaseReferralListByWFSCaseIdResponse.Result)
     }
 
     companion object {

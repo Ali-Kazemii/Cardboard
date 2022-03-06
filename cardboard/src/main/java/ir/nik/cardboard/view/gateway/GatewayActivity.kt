@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.nik.cardboard.R
 import ir.nik.cardboard.di.injectKoin
 import ir.nik.cardboard.utils.Const.KEY_CASE_LIST
-import ir.nik.cardboard.view.base.PrivateViewModel
+import ir.nik.cardboard.view.base.CardboardPrivateViewModel
 import ir.nik.cardboard.view.cardboard.CardboardActivity
 import ir.nik.cardboard.view.createletter.CreateLetterActivity
 import ir.nik.cardboard.view.gateway.model.CardboardBindDataModel
@@ -18,7 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GatewayActivity : AppCompatActivity() {
 
-    private val viewModel by viewModel<PrivateViewModel>()
+    private val viewModel by viewModel<CardboardPrivateViewModel>()
 
     companion object {
         const val KEY_RESULT = "result"

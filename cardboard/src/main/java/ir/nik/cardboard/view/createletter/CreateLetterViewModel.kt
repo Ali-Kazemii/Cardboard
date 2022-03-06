@@ -3,34 +3,34 @@ package ir.nik.cardboard.view.createletter
 import androidx.lifecycle.MutableLiveData
 import com.nik.cardboard.R
 import ir.awlrhm.modules.utils.calendar.PersianCalendar
-import ir.nik.cardboard.data.local.PreferenceConfiguration
-import ir.nik.cardboard.data.network.api.RemoteRepository
-import ir.nik.cardboard.data.network.model.base.BaseResponse
+import ir.nik.cardboard.data.local.CardboardPreferenceConfiguration
+import ir.nik.cardboard.data.network.api.CardboardRemoteRepository
+import ir.nik.cardboard.data.network.model.base.CardboardBaseResponse
 import ir.nik.cardboard.data.network.model.request.*
 import ir.nik.cardboard.data.network.model.response.*
 import ir.nik.cardboard.utils.Const
-import ir.nik.cardboard.view.base.BaseViewModel
+import ir.nik.cardboard.view.base.CardboardBaseViewModel
 import ir.nik.cardboard.view.createletter.step.StepModel
 
 internal class CreateLetterViewModel(
-    private val remote: RemoteRepository,
-    pref: PreferenceConfiguration,
+    private val remote: CardboardRemoteRepository,
+    pref: CardboardPreferenceConfiguration,
     calendar: PersianCalendar
-) : BaseViewModel(pref, calendar, remote) {
+) : CardboardBaseViewModel(pref, calendar, remote) {
 
-    val secretariatResponse = MutableLiveData<SecretariatResponse>()
-    val letterTypeResponse = MutableLiveData<LetterTypeResponse>()
-    val documentMethodTypeResponse = MutableLiveData<DocumentSendReceiveMethodResponse>()
-    val draftLetterListResponse = MutableLiveData<DraftLetterResponse>()
-    val letterByIdResponse = MutableLiveData<LetterByIdResponse>()
-    val listCaseReferralByWfsCaseResponse = MutableLiveData<CaseReferralListByWFSCaseIdResponse>()
-    val caseLinkedResponse = MutableLiveData<CaseListLinkedResponse>()
-    val userLetterListResponse = MutableLiveData<UserLetterListResponse>()
-    val documentRelationTypeResponse = MutableLiveData<DocumentRelationTypeResponse>()
-    val contractByCustomerIdResponse = MutableLiveData<ContractByCustomerIdResponse>()
-    val customerAccountByCustomerIdResponse = MutableLiveData<CustomerAccountByCustomerIdResponse>()
-    val commercialDocumentByCustomerIdResponse = MutableLiveData<CommercialDocumentByCustomerIdResponse>()
-    val projectSpacialResponse = MutableLiveData<ProjectSpacialListResponse>()
+    val secretariatResponse = MutableLiveData<CardboardSecretariatResponse>()
+    val letterTypeResponse = MutableLiveData<CardboardLetterTypeResponse>()
+    val documentMethodTypeResponse = MutableLiveData<CardboardDocumentSendReceiveMethodResponse>()
+    val draftLetterListResponse = MutableLiveData<CardboardDraftLetterResponse>()
+    val letterByIdResponse = MutableLiveData<CardboardLetterByIdResponse>()
+    val listCaseReferralByWfsCaseResponse = MutableLiveData<CardboardCaseReferralListByWFSCaseIdResponse>()
+    val caseLinkedResponse = MutableLiveData<CardboardCaseListLinkedResponse>()
+    val userLetterListResponse = MutableLiveData<CardboardUserLetterListResponse>()
+    val documentRelationTypeResponse = MutableLiveData<CardboardDocumentRelationTypeResponse>()
+    val contractByCustomerIdResponse = MutableLiveData<CardboardContractByCustomerIdResponse>()
+    val customerAccountByCustomerIdResponse = MutableLiveData<CardboardCustomerAccountByCustomerIdResponse>()
+    val commercialDocumentByCustomerIdResponse = MutableLiveData<CardboardCommercialDocumentByCustomerIdResponse>()
+    val projectSpacialResponse = MutableLiveData<CardboardProjectSpacialListResponse>()
 
 
     fun getCreateLetterSteps(): List<StepModel> {
@@ -69,16 +69,16 @@ internal class CreateLetterViewModel(
     }
 
     fun getSecretariatList(
-        request: SecretariatRequest
+        request: CardboardSecretariatRequest
     ) {
         remote.getSecretariatList(
             request,
-            object : RemoteRepository.OnApiCallback<SecretariatResponse> {
-                override fun onDataLoaded(data: SecretariatResponse) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardSecretariatResponse> {
+                override fun onDataLoaded(data: CardboardSecretariatResponse) {
                     secretariatResponse.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                     error.postValue(response)
                 }
             })
@@ -86,302 +86,302 @@ internal class CreateLetterViewModel(
 
 
     fun getLetterType(
-        request: LetterTypeRequest
+        request: CardboardLetterTypeRequest
     ) {
         remote.getLetterType(
             request,
-            object : RemoteRepository.OnApiCallback<LetterTypeResponse> {
-                override fun onDataLoaded(data: LetterTypeResponse) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardLetterTypeResponse> {
+                override fun onDataLoaded(data: CardboardLetterTypeResponse) {
                     letterTypeResponse.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      error.postValue(response)
                 }
             })
     }
 
-    fun postLetter(request: PostLetterRequest) {
+    fun postLetter(request: CardboardPostLetterRequest) {
         remote.postLetter(
             request,
-            object : RemoteRepository.OnApiCallback<ResponseId> {
-                override fun onDataLoaded(data: ResponseId) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardResponseId> {
+                override fun onDataLoaded(data: CardboardResponseId) {
                     responseId.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      error.postValue(response)
                 }
             })
     }
 
     fun getDocumentSendReceiveMethod(
-        request: DocumentSendReceiveMethodRequest
+        request: CardboardDocumentSendReceiveMethodRequest
     ) {
         remote.getDocumentSendReceiveMethod(
             request,
-            object : RemoteRepository.OnApiCallback<DocumentSendReceiveMethodResponse> {
-                override fun onDataLoaded(data: DocumentSendReceiveMethodResponse) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardDocumentSendReceiveMethodResponse> {
+                override fun onDataLoaded(data: CardboardDocumentSendReceiveMethodResponse) {
                     documentMethodTypeResponse.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      error.postValue(response)
                 }
             })
     }
 
     fun getDraftLetterList(
-        request: DraftLetterRequest
+        request: CardboardDraftLetterRequest
     ) {
         remote.getDraftLetterList(
             request,
-            object : RemoteRepository.OnApiCallback<DraftLetterResponse> {
-                override fun onDataLoaded(data: DraftLetterResponse) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardDraftLetterResponse> {
+                override fun onDataLoaded(data: CardboardDraftLetterResponse) {
                     draftLetterListResponse.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      error.postValue(response)
                 }
             })
     }
 
     fun deleteLetter(
-        request: DeleteLetterRequest
+        request: CardboardDeleteLetterRequest
     ) {
         remote.deleteLetter(
             request,
-            object : RemoteRepository.OnApiCallback<ResponseId> {
-                override fun onDataLoaded(data: ResponseId) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardResponseId> {
+                override fun onDataLoaded(data: CardboardResponseId) {
                     responseId.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      errorDelete.postValue(response)
                 }
             })
     }
 
     fun getLetterById(
-        request: LetterByIdRequest
+        request: CardboardLetterByIdRequest
     ) {
         remote.getLetterById(
             request,
-            object : RemoteRepository.OnApiCallback<LetterByIdResponse> {
-                override fun onDataLoaded(data: LetterByIdResponse) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardLetterByIdResponse> {
+                override fun onDataLoaded(data: CardboardLetterByIdResponse) {
                     letterByIdResponse.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      error.postValue(response)
                 }
             })
     }
 
     fun getCaseReferralListByWFSCaseId(
-        request: CaseReferralListByWFSCaseIdRequest
+        request: CardboardCaseReferralListByWFSCaseIdRequest
     ) {
         remote.getCaseReferralListByWFSCaseId(
             request,
-            object : RemoteRepository.OnApiCallback<CaseReferralListByWFSCaseIdResponse> {
-                override fun onDataLoaded(data: CaseReferralListByWFSCaseIdResponse) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardCaseReferralListByWFSCaseIdResponse> {
+                override fun onDataLoaded(data: CardboardCaseReferralListByWFSCaseIdResponse) {
                     listCaseReferralByWfsCaseResponse.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      error.postValue(response)
                 }
             })
     }
 
     fun deleteCaseRefer(
-        request: DeleteCaseReferRequest
+        request: CardboardDeleteCaseReferRequest
     ) {
         remote.deleteCaseRefer(
             request,
-            object : RemoteRepository.OnApiCallback<ResponseId> {
-                override fun onDataLoaded(data: ResponseId) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardResponseId> {
+                override fun onDataLoaded(data: CardboardResponseId) {
                     responseId.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      errorDelete.postValue(response)
                 }
             })
     }
 
     fun getCaseLinkedList(
-        request: CaseLinkedRequest
+        request: CardboardCaseLinkedRequest
     ) {
         remote.getCaseLinkedList(
             request,
-            object : RemoteRepository.OnApiCallback<CaseListLinkedResponse> {
-                override fun onDataLoaded(data: CaseListLinkedResponse) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardCaseListLinkedResponse> {
+                override fun onDataLoaded(data: CardboardCaseListLinkedResponse) {
                     caseLinkedResponse.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      error.postValue(response)
                 }
             })
     }
 
     fun deleteCaseLinked(
-        request: DeleteCaseLinkedRequest
+        request: CardboardDeleteCaseLinkedRequest
     ) {
         remote.deleteCaseLinked(
             request,
-            object : RemoteRepository.OnApiCallback<ResponseId> {
-                override fun onDataLoaded(data: ResponseId) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardResponseId> {
+                override fun onDataLoaded(data: CardboardResponseId) {
                     responseId.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      errorDelete.postValue(response)
                 }
             })
     }
 
     fun getUserLetterList(
-        request: UserLetterListRequest
+        request: CardboardUserLetterListRequest
     ) {
         remote.getUserLetterList(
             request,
-            object : RemoteRepository.OnApiCallback<UserLetterListResponse> {
-                override fun onDataLoaded(data: UserLetterListResponse) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardUserLetterListResponse> {
+                override fun onDataLoaded(data: CardboardUserLetterListResponse) {
                     userLetterListResponse.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      error.postValue(response)
                 }
             })
     }
 
     fun getDocumentRelationTypeList(
-        request: DocumentRelationTypeRequest
+        request: CardboardDocumentRelationTypeRequest
     ){
         remote.getDocumentRelationTypeList(
             request,
-            object : RemoteRepository.OnApiCallback<DocumentRelationTypeResponse> {
-                override fun onDataLoaded(data: DocumentRelationTypeResponse) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardDocumentRelationTypeResponse> {
+                override fun onDataLoaded(data: CardboardDocumentRelationTypeResponse) {
                     documentRelationTypeResponse.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      error.postValue(response)
                 }
             })
     }
 
     fun postCaseLinkedListWithJson(
-        request: PostCaseLinkedListJsonRequest
+        request: CardboardPostCaseLinkedListJsonRequest
     ){
         remote.postCaseLinkedListWithJson(
             request,
-            object : RemoteRepository.OnApiCallback<ResponseId> {
-                override fun onDataLoaded(data: ResponseId) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardResponseId> {
+                override fun onDataLoaded(data: CardboardResponseId) {
                     responseId.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      error.postValue(response)
                 }
             })
     }
 
     fun getContractByCustomerId(
-        request: ContractByCustomerIdRequest
+        request: CardboardContractByCustomerIdRequest
     ){
         remote.getContractByCustomerId(
             request,
-            object : RemoteRepository.OnApiCallback<ContractByCustomerIdResponse> {
-                override fun onDataLoaded(data: ContractByCustomerIdResponse) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardContractByCustomerIdResponse> {
+                override fun onDataLoaded(data: CardboardContractByCustomerIdResponse) {
                     contractByCustomerIdResponse.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      error.postValue(response)
                 }
             })
     }
 
     fun getCustomerAccountByCustomerId(
-        request: CustomerAccountByCustomerIdRequest
+        request: CardboardCustomerAccountByCustomerIdRequest
     ){
         remote.getCustomerAccountByCustomerId(
             request,
-            object : RemoteRepository.OnApiCallback<CustomerAccountByCustomerIdResponse> {
-                override fun onDataLoaded(data: CustomerAccountByCustomerIdResponse) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardCustomerAccountByCustomerIdResponse> {
+                override fun onDataLoaded(data: CardboardCustomerAccountByCustomerIdResponse) {
                     customerAccountByCustomerIdResponse.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      error.postValue(response)
                 }
             })
     }
 
     fun getCommercialDocumentByCustomerId(
-        request: CommercialDocumentByCustomerIdRequest
+        request: CardboardCommercialDocumentByCustomerIdRequest
     ){
         remote.getCommercialDocumentByCustomerId(
            request,
-            object : RemoteRepository.OnApiCallback<CommercialDocumentByCustomerIdResponse> {
-                override fun onDataLoaded(data: CommercialDocumentByCustomerIdResponse) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardCommercialDocumentByCustomerIdResponse> {
+                override fun onDataLoaded(data: CardboardCommercialDocumentByCustomerIdResponse) {
                     commercialDocumentByCustomerIdResponse.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      error.postValue(response)
                 }
             })
     }
 
     fun getProjectSpacialList(
-        request: ProjectSpacialListRequest
+        request: CardboardProjectSpacialListRequest
     ){
         remote.getProjectSpacialList(
             request ,
-            object : RemoteRepository.OnApiCallback<ProjectSpacialListResponse> {
-                override fun onDataLoaded(data: ProjectSpacialListResponse) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardProjectSpacialListResponse> {
+                override fun onDataLoaded(data: CardboardProjectSpacialListResponse) {
                     projectSpacialResponse.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      error.postValue(response)
                 }
             })
     }
 
     fun postLetterExtraInformation(
-        request: PostLetterExtraInformationRequest
+        request: CardboardPostLetterExtraInformationRequest
     ){
         remote.postLetterExtraInformation(
             request,
-            object : RemoteRepository.OnApiCallback<ResponseId> {
-                override fun onDataLoaded(data: ResponseId) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardResponseId> {
+                override fun onDataLoaded(data: CardboardResponseId) {
                     responseId.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      error.postValue(response)
                 }
             })
     }
 
     fun postFinalSaveLetter(
-        request: PostFinalSaveLetterRequest
+        request: CardboardPostFinalSaveLetterRequest
     ){
         remote.postFinalSaveLetter(
             request,
-            object : RemoteRepository.OnApiCallback<ResponseId> {
-                override fun onDataLoaded(data: ResponseId) {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardResponseId> {
+                override fun onDataLoaded(data: CardboardResponseId) {
                     responseId.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                      errorPostCaseRefer.postValue(response)
                 }
             })

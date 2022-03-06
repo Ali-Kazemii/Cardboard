@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ir.nik.cardboard.view.attachment.AttachmentActivity">
+    tools:context="ir.nik.cardboard.view.attachment.CardboardAttachmentActivity">
 
     <include layout="@layout/fragment" />
 

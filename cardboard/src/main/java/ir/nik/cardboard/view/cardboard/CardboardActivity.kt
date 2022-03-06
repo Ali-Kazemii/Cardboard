@@ -7,8 +7,8 @@ import com.nik.cardboard.R
 import ir.awlrhm.modules.extentions.replaceFragmentInActivity
 import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.utils.Const.KEY_CASE_LIST
-import ir.nik.cardboard.view.caselist.CaseListActivity
-import ir.nik.cardboard.view.caselist.CaseListModel
+import ir.nik.cardboard.view.caselist.CardboardCaseListActivity
+import ir.nik.cardboard.view.caselist.CardboardCaseListModel
 import ir.nik.cardboard.view.gateway.model.CaseListType
 import ir.nik.cardboard.view.gateway.model.CaseType
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -64,11 +64,11 @@ internal class CardboardActivity : AppCompatActivity() {
         name: String,
         caseType: CaseType
     ) {
-        val intent = Intent(this@CardboardActivity, CaseListActivity::class.java)
+        val intent = Intent(this@CardboardActivity, CardboardCaseListActivity::class.java)
         val bundle = Bundle()
         bundle.putSerializable(
             Const.KEY_CASE_LIST_TYPE,
-            CaseListModel().also { model ->
+            CardboardCaseListModel().also { model ->
                 model.documentStatusId = id
                 model.caseName = name
                 model.statusReference = CaseListType.KEY_ALL

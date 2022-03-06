@@ -1,11 +1,10 @@
 package ir.nik.cardboard.data.network.model.base
 
 import com.google.gson.annotations.SerializedName
-import ir.nik.cardboard.data.network.model.base.BaseRequest
 import ir.nik.cardboard.utils.PAGE_SIZE
 import java.io.Serializable
 
-internal open class BaseGetRequest: BaseRequest(), Serializable {
+internal open class BaseGetRequest: CardboardBaseRequest(), Serializable {
     @SerializedName("jsonParameters")
     var jsonParameters: String?= null
 

@@ -10,11 +10,11 @@ import ir.awlrhm.modules.extentions.failureOperation
 import ir.awlrhm.modules.extentions.showError
 import ir.awlrhm.modules.extentions.successOperation
 import ir.awlrhm.modules.view.ActionDialog
-import ir.nik.cardboard.data.network.model.request.CaseLinkedRequest
-import ir.nik.cardboard.data.network.model.request.DeleteCaseLinkedRequest
+import ir.nik.cardboard.data.network.model.request.CardboardCaseLinkedRequest
+import ir.nik.cardboard.data.network.model.request.CardboardDeleteCaseLinkedRequest
 import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.utils.caseLinkedJson
-import ir.nik.cardboard.view.base.BaseFragment
+import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.createletter.CreateLetterViewModel
 import kotlinx.android.synthetic.main.fragment_letter_linked.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -22,7 +22,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 internal class LetterLinkedFragment(
     private val wfsCaseId: Long,
     private val listener: OnActionListener
-) : BaseFragment() {
+) : CardboardBaseFragment() {
 
     private val viewModel by viewModel<CreateLetterViewModel>()
 
@@ -42,7 +42,7 @@ internal class LetterLinkedFragment(
 
     private fun getLinkedLetter() {
         viewModel.getCaseLinkedList(
-            CaseLinkedRequest().also { request ->
+            CardboardCaseLinkedRequest().also { request ->
                 request.userId = viewModel.userId
                 request.financialYearId = viewModel.financialYear
                 request.typeOperation = 101
@@ -85,7 +85,7 @@ internal class LetterLinkedFragment(
 
                                         rclLinked.actionLoading = true
                                         viewModel.deleteCaseLinked(
-                                            DeleteCaseLinkedRequest().also { request ->
+                                            CardboardDeleteCaseLinkedRequest().also { request ->
                                                 request.clId = clId
                                                 request.userId = viewModel.userId
                                                 request.financialYearId = viewModel.financialYear

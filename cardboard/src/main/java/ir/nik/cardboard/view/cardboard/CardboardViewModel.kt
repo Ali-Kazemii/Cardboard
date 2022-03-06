@@ -3,18 +3,18 @@ package ir.nik.cardboard.view.cardboard
 import androidx.lifecycle.MutableLiveData
 import ir.awlrhm.modules.extentions.formatDate
 import ir.awlrhm.modules.utils.calendar.PersianCalendar
-import ir.nik.cardboard.data.local.PreferenceConfiguration
-import ir.nik.cardboard.data.network.api.RemoteRepository
+import ir.nik.cardboard.data.local.CardboardPreferenceConfiguration
+import ir.nik.cardboard.data.network.api.CardboardRemoteRepository
 import ir.nik.cardboard.data.network.model.base.BaseGetRequest
-import ir.nik.cardboard.data.network.model.base.BaseResponse
+import ir.nik.cardboard.data.network.model.base.CardboardBaseResponse
 import ir.nik.cardboard.data.network.model.response.CardboardListResponse
-import ir.nik.cardboard.view.base.BaseViewModel
+import ir.nik.cardboard.view.base.CardboardBaseViewModel
 
 internal class CardboardViewModel(
-    private val remote: RemoteRepository,
-    pref: PreferenceConfiguration,
+    private val remote: CardboardRemoteRepository,
+    pref: CardboardPreferenceConfiguration,
     calendar: PersianCalendar
-) : BaseViewModel(pref, calendar, remote) {
+) : CardboardBaseViewModel(pref, calendar, remote) {
 
     val cardboardListResponse = MutableLiveData<CardboardListResponse>()
 
@@ -35,12 +35,12 @@ internal class CardboardViewModel(
     ) {
         remote.getCardboardList(
             request,
-            object : RemoteRepository.OnApiCallback<CardboardListResponse> {
+            object : CardboardRemoteRepository.OnApiCallback<CardboardListResponse> {
                 override fun onDataLoaded(data: CardboardListResponse) {
                     cardboardListResponse.postValue(data)
                 }
 
-                override fun onError(response: BaseResponse?) {
+                override fun onError(response: CardboardBaseResponse?) {
                     error.postValue(response)
                 }
             })

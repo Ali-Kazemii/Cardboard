@@ -5,11 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nik.cardboard.R
-import ir.nik.cardboard.data.network.model.response.CaseListLinkedResponse
+import ir.nik.cardboard.data.network.model.response.CardboardCaseListLinkedResponse
 import kotlinx.android.synthetic.main.item_letter_linked.view.*
 
 internal class Adapter(
-    private val list: List<CaseListLinkedResponse.Result>,
+    private val list: List<CardboardCaseListLinkedResponse.Result>,
     private val listener: OnActionListener
 ): RecyclerView.Adapter<Adapter.CustomViewHolder>() {
 
@@ -24,7 +24,7 @@ internal class Adapter(
     override fun getItemCount(): Int = list.size
 
     inner class CustomViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        fun onBind(model: CaseListLinkedResponse.Result){
+        fun onBind(model: CardboardCaseListLinkedResponse.Result){
             arrangeTitle(model.title)?.let {
                 itemView.txtTitle.text = it
             }

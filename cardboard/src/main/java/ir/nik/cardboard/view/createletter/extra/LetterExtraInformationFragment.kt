@@ -20,11 +20,11 @@ import ir.awlrhm.modules.view.Spinner
 import ir.awlrhm.modules.view.searchablePagingDialog.DialogStatus
 import ir.awlrhm.modules.view.searchablePagingDialog.SearchablePagingDialog
 import ir.nik.cardboard.data.network.model.request.*
-import ir.nik.cardboard.data.network.model.response.CommercialDocumentByCustomerIdResponse
-import ir.nik.cardboard.data.network.model.response.CustomerAccountByCustomerIdResponse
-import ir.nik.cardboard.data.network.model.response.ProjectSpacialListResponse
+import ir.nik.cardboard.data.network.model.response.CardboardCommercialDocumentByCustomerIdResponse
+import ir.nik.cardboard.data.network.model.response.CardboardCustomerAccountByCustomerIdResponse
+import ir.nik.cardboard.data.network.model.response.CardboardProjectSpacialListResponse
 import ir.nik.cardboard.utils.*
-import ir.nik.cardboard.view.base.BaseFragment
+import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.createletter.CreateLetterViewModel
 import kotlinx.android.synthetic.main.contain_letter_further_information.*
 import kotlinx.android.synthetic.main.fragment_letter_extra_information.*
@@ -33,19 +33,19 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 internal class LetterExtraInformationFragment(
     private val letterId: Long,
     private val customerId: Long
-) : BaseFragment(), OnStatusListener {
+) : CardboardBaseFragment(), OnStatusListener {
 
     private val viewModel by viewModel<CreateLetterViewModel>()
 
     private var listContractNumber: MutableList<ItemModel> = mutableListOf()
 
-    private lateinit var projectDialog: SearchablePagingDialog<ProjectSpacialListResponse.Result>
+    private lateinit var projectDialog: SearchablePagingDialog<CardboardProjectSpacialListResponse.Result>
     private var projectDialogStatus = DialogStatus.CLICKED
 
-    private lateinit var commercialDialog: SearchablePagingDialog<CommercialDocumentByCustomerIdResponse.Result>
+    private lateinit var commercialDialog: SearchablePagingDialog<CardboardCommercialDocumentByCustomerIdResponse.Result>
     private var commercialDialogStatus = DialogStatus.CLICKED
 
-    private lateinit var customerAccountDialog: SearchablePagingDialog<CustomerAccountByCustomerIdResponse.Result>
+    private lateinit var customerAccountDialog: SearchablePagingDialog<CardboardCustomerAccountByCustomerIdResponse.Result>
     private var customerAccountDialogStatus = DialogStatus.CLICKED
 
     private var contractId: Long = 0
@@ -55,8 +55,8 @@ internal class LetterExtraInformationFragment(
 
     override fun setup() {
         projectDialog = SearchablePagingDialog(
-            object : SearchablePagingDialog.OnActionListener<ProjectSpacialListResponse.Result> {
-                override fun onChoose(model: DynamicModel<ProjectSpacialListResponse.Result>) {
+            object : SearchablePagingDialog.OnActionListener<CardboardProjectSpacialListResponse.Result> {
+                override fun onChoose(model: DynamicModel<CardboardProjectSpacialListResponse.Result>) {
                     spProject.text = model.title
                     projectId = model.dynamic.projectId ?: 0
                 }
@@ -73,8 +73,8 @@ internal class LetterExtraInformationFragment(
 
         commercialDialog = SearchablePagingDialog(
             object :
-                SearchablePagingDialog.OnActionListener<CommercialDocumentByCustomerIdResponse.Result> {
-                override fun onChoose(model: DynamicModel<CommercialDocumentByCustomerIdResponse.Result>) {
+                SearchablePagingDialog.OnActionListener<CardboardCommercialDocumentByCustomerIdResponse.Result> {
+                override fun onChoose(model: DynamicModel<CardboardCommercialDocumentByCustomerIdResponse.Result>) {
                     spCommercialId.text = model.title
                     commercialId = model.dynamic.cdId ?: 0
                 }
@@ -88,7 +88,7 @@ internal class LetterExtraInformationFragment(
                     search: String
                 ) {
                     viewModel.getCommercialDocumentByCustomerId(
-                        CommercialDocumentByCustomerIdRequest().also { request ->
+                        CardboardCommercialDocumentByCustomerIdRequest().also { request ->
                             request.userId = viewModel.userId
                             request.financialYearId = viewModel.financialYear
                             request.pageNumber = pageNumber
@@ -106,8 +106,8 @@ internal class LetterExtraInformationFragment(
 
         customerAccountDialog = SearchablePagingDialog(
             object :
-                SearchablePagingDialog.OnActionListener<CustomerAccountByCustomerIdResponse.Result> {
-                override fun onChoose(model: DynamicModel<CustomerAccountByCustomerIdResponse.Result>) {
+                SearchablePagingDialog.OnActionListener<CardboardCustomerAccountByCustomerIdResponse.Result> {
+                override fun onChoose(model: DynamicModel<CardboardCustomerAccountByCustomerIdResponse.Result>) {
                     spCustomerAccount.text = model.title
                     customerAccount = model.dynamic.caId ?: 0
                 }
@@ -158,7 +158,7 @@ internal class LetterExtraInformationFragment(
                 return@observe
 
             response.result?.let { list ->
-                val listProject = mutableListOf<DynamicModel<ProjectSpacialListResponse.Result>>()
+                val listProject = mutableListOf<DynamicModel<CardboardProjectSpacialListResponse.Result>>()
                 listProject.also { listModel ->
                     list.forEach { item ->
                         listModel.add(
@@ -191,7 +191,7 @@ internal class LetterExtraInformationFragment(
 
                 response.result?.let { list ->
                     val listCommercialId =
-                        mutableListOf<DynamicModel<CommercialDocumentByCustomerIdResponse.Result>>()
+                        mutableListOf<DynamicModel<CardboardCommercialDocumentByCustomerIdResponse.Result>>()
                     listCommercialId.also { listModel ->
                         list.forEach { item ->
                             listModel.add(
@@ -226,7 +226,7 @@ internal class LetterExtraInformationFragment(
                 response.result?.let { list ->
 
                     val listCustomerAccount =
-                        mutableListOf<DynamicModel<CustomerAccountByCustomerIdResponse.Result>>()
+                        mutableListOf<DynamicModel<CardboardCustomerAccountByCustomerIdResponse.Result>>()
                     listCustomerAccount.also { listModel ->
                         list.forEach { item ->
                             listModel.add(
@@ -298,7 +298,7 @@ internal class LetterExtraInformationFragment(
         btnDone.setOnClickListener {
             onStatus(Status.LOADING)
             viewModel.postLetterExtraInformation(
-                PostLetterExtraInformationRequest().also { request ->
+                CardboardPostLetterExtraInformationRequest().also { request ->
                     request.letterPropertyJson =
                         if (layoutKeyWords.childCount != 0)
                             getLetterExtraInformationJson(this.letterId, getKeyWords())
@@ -341,7 +341,7 @@ internal class LetterExtraInformationFragment(
         search: String = ""
     ) {
         viewModel.getProjectSpacialList(
-            ProjectSpacialListRequest().also { request ->
+            CardboardProjectSpacialListRequest().also { request ->
                 request.userId = viewModel.userId
                 request.financialYearId = viewModel.financialYear
                 request.pageNumber = pageNumber
@@ -359,7 +359,7 @@ internal class LetterExtraInformationFragment(
         search: String = ""
     ) {
         viewModel.getCustomerAccountByCustomerId(
-            CustomerAccountByCustomerIdRequest().also { request ->
+            CardboardCustomerAccountByCustomerIdRequest().also { request ->
                 request.userId = viewModel.userId
                 request.pageNumber = pageNumber
                 request.typeOperation = 101
@@ -375,7 +375,7 @@ internal class LetterExtraInformationFragment(
         spCommercialId.loading(true)
         commercialDialogStatus = DialogStatus.CLICKED
         viewModel.getCommercialDocumentByCustomerId(
-            CommercialDocumentByCustomerIdRequest().also { request ->
+            CardboardCommercialDocumentByCustomerIdRequest().also { request ->
                 request.userId = viewModel.userId
                 request.financialYearId = viewModel.financialYear
                 request.pageNumber = 1
@@ -393,7 +393,7 @@ internal class LetterExtraInformationFragment(
         if (listContractNumber.isEmpty()) {
             spContractNo.loading(true)
             viewModel.getContractByCustomerId(
-                ContractByCustomerIdRequest().also { request ->
+                CardboardContractByCustomerIdRequest().also { request ->
                     request.userId = viewModel.userId
                     request.typeOperation = 12
                     request.financialYearId = viewModel.financialYear

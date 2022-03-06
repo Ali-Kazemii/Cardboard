@@ -18,11 +18,11 @@ import ir.awlrhm.modules.view.Spinner
 import ir.awlrhm.modules.view.searchablePagingDialog.DialogStatus
 import ir.awlrhm.modules.view.searchablePagingDialog.SearchablePagingDialog
 import ir.nik.cardboard.data.network.model.request.*
-import ir.nik.cardboard.data.network.model.response.CaseReferralListByWFSCaseIdResponse
-import ir.nik.cardboard.data.network.model.response.UserListResponse
-import ir.nik.cardboard.data.network.model.utt.UTTWFSModel
+import ir.nik.cardboard.data.network.model.response.CardboardCaseReferralListByWFSCaseIdResponse
+import ir.nik.cardboard.data.network.model.response.CardboardUserListResponse
+import ir.nik.cardboard.data.network.model.utt.CardboardUttWfsModel
 import ir.nik.cardboard.utils.*
-import ir.nik.cardboard.view.base.BaseFragment
+import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.createletter.CreateLetterViewModel
 import kotlinx.android.synthetic.main.contain_letter_receiver.*
 import kotlinx.android.synthetic.main.fragment_letter_add_receiver.*
@@ -30,11 +30,11 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class AddLetterReceiverFragment(
     private val wfsCaseId: Long
-) : BaseFragment(), OnStatusListener {
+) : CardboardBaseFragment(), OnStatusListener {
 
     constructor(
         caseId: Long,
-        model: CaseReferralListByWFSCaseIdResponse.Result?
+        model: CardboardCaseReferralListByWFSCaseIdResponse.Result?
     ) : this(caseId) {
         this.model = model
     }
@@ -42,9 +42,9 @@ internal class AddLetterReceiverFragment(
     private val viewModel by viewModel<CreateLetterViewModel>()
     private var formId: Int = 553
     private var wfsCrId: Long = 0
-    private var model: CaseReferralListByWFSCaseIdResponse.Result? = null
+    private var model: CardboardCaseReferralListByWFSCaseIdResponse.Result? = null
 
-    private lateinit var userDialog: SearchablePagingDialog<UserListResponse.Result>
+    private lateinit var userDialog: SearchablePagingDialog<CardboardUserListResponse.Result>
     private var userDialogStatus = DialogStatus.CLICKED
 
     private var listReferType: MutableList<ItemModel> = mutableListOf()
@@ -82,8 +82,8 @@ internal class AddLetterReceiverFragment(
         }
 
         userDialog = SearchablePagingDialog(
-            object : SearchablePagingDialog.OnActionListener<UserListResponse.Result> {
-                override fun onChoose(model: DynamicModel<UserListResponse.Result>) {
+            object : SearchablePagingDialog.OnActionListener<CardboardUserListResponse.Result> {
+                override fun onChoose(model: DynamicModel<CardboardUserListResponse.Result>) {
                     customerId = model.dynamic.userId ?: 0
                     customerPostId = model.dynamic.postId ?: 0
                     spReceiver.text = model.title
@@ -95,7 +95,7 @@ internal class AddLetterReceiverFragment(
 
                 override fun onSearchPaging(pageNumber: Int, search: String) {
                     viewModel.getUserList(
-                        UserDataRequest().also { request ->
+                        CardboardUserDataRequest().also { request ->
                             request.userId = viewModel.userId
                             request.registerUserId = viewModel.userId
                             request.typeOperation = 105
@@ -127,7 +127,7 @@ internal class AddLetterReceiverFragment(
 
             response.result?.let { list ->
                 val listUser =
-                    mutableListOf<DynamicModel<UserListResponse.Result>>()
+                    mutableListOf<DynamicModel<CardboardUserListResponse.Result>>()
                 listUser.also { listModel ->
                     list.forEach { item ->
                         listModel.add(
@@ -262,11 +262,11 @@ internal class AddLetterReceiverFragment(
             if (isValid) {
                 onStatus(Status.LOADING)
                 viewModel.postCaseReferWithJson(
-                    CaseReferWithJsonRequest().also { request ->
+                    CardboardCaseReferWithJsonRequest().also { request ->
                         request.wfsCrIdJson =
                             convertUTTWFSModelToJson(
-                                mutableListOf<UTTWFSModel>().apply {
-                                    add(UTTWFSModel().also { model ->
+                                mutableListOf<CardboardUttWfsModel>().apply {
+                                    add(CardboardUttWfsModel().also { model ->
                                         model.wfsCrId = wfsCrId
                                         model.wfsCaseId = wfsCaseId
                                         model.wfsProcessId = formId.toLong()
@@ -303,7 +303,7 @@ internal class AddLetterReceiverFragment(
         spReceiver.loading(true)
         userDialogStatus = DialogStatus.CLICKED
         viewModel.getUserList(
-            UserDataRequest().also { request ->
+            CardboardUserDataRequest().also { request ->
                 request.userId = viewModel.userId
                 request.registerUserId = viewModel.userId
                 request.typeOperation = 105
@@ -318,7 +318,7 @@ internal class AddLetterReceiverFragment(
         if (listReferenceAction.isEmpty()) {
             spReferenceAction.loading(true)
             viewModel.getReferenceActionList(
-                ReferenceActionRequest().also { request ->
+                CardboardReferenceActionRequest().also { request ->
                     request.userId = viewModel.userId
                     request.typeOperation = 10
                     request.financialYearId = viewModel.financialYear
@@ -344,7 +344,7 @@ internal class AddLetterReceiverFragment(
         if (listPriority.isEmpty()) {
             spPriority.loading(true)
             viewModel.getPriority(
-                BaseTypeRequest().also { request ->
+                CardboardBaseTypeRequest().also { request ->
                     request.userId = viewModel.userId
                     request.typeOperation = 10
                     request.financialYearId = viewModel.financialYear
@@ -371,7 +371,7 @@ internal class AddLetterReceiverFragment(
         if (listSendReceiveMethod.isEmpty()) {
             spSendReceiveMethod.loading(true)
             viewModel.getDocumentSendReceiveMethod(
-                DocumentSendReceiveMethodRequest().also { request ->
+                CardboardDocumentSendReceiveMethodRequest().also { request ->
                     request.userId = viewModel.userId
                     request.financialYearId = viewModel.financialYear
                     request.typeOperation = 10
@@ -398,7 +398,7 @@ internal class AddLetterReceiverFragment(
         if (listReferType.isEmpty()) {
             spReferType.loading(true)
             viewModel.getReferTypeList(
-                ReferenceTypeRequest().also { request ->
+                CardboardReferenceTypeRequest().also { request ->
                     request.userId = viewModel.userId
                     request.typeOperation = 10
                     request.financialYearId = viewModel.financialYear

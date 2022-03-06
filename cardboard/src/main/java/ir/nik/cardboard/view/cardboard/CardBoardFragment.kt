@@ -14,8 +14,8 @@ import ir.nik.cardboard.data.network.model.base.BaseGetRequest
 import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.utils.SSID
 import ir.nik.cardboard.utils.cardboardListJson
-import ir.nik.cardboard.view.base.BaseFragment
-import ir.nik.cardboard.view.dialog.CaseFilterDialog
+import ir.nik.cardboard.view.base.CardboardBaseFragment
+import ir.nik.cardboard.view.dialog.CardboardCaseFilterDialog
 import kotlinx.android.synthetic.main.contain_cardboard.*
 import kotlinx.android.synthetic.main.fragment_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,7 +23,7 @@ import java.lang.StringBuilder
 
 internal class CardBoardFragment(
     private val callback: (ssId: Long, name: String) -> Unit
-) : BaseFragment() {
+) : CardboardBaseFragment() {
 
     private val viewModel by viewModel<CardboardViewModel>()
 
@@ -49,10 +49,10 @@ internal class CardBoardFragment(
             activity.onBackPressed()
         }
         layoutDate.setOnClickListener {
-            CaseFilterDialog(mutableListOf()) {
+            CardboardCaseFilterDialog(mutableListOf()) {
                 getDashboardMenu()
                 configDocumentDate()
-            }.show(activity.supportFragmentManager, CaseFilterDialog.TAG)
+            }.show(activity.supportFragmentManager, CardboardCaseFilterDialog.TAG)
         }
 
         imgBanner.setOnClickListener {
@@ -85,7 +85,7 @@ internal class CardBoardFragment(
 
         viewModel.cardboardListResponse.observe(viewLifecycleOwner, {
             it.result?.let { list ->
-                val adapter = Adapter(list)
+                val adapter = CardboardAdapter(list)
                 { id, name ->
                     callback.invoke(
                         id, name ?: ""

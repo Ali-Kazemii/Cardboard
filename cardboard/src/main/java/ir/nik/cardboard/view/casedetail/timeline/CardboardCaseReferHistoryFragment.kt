@@ -13,7 +13,7 @@ import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.utils.caseReferHistoryJson
 import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.casedetail.CardboardCaseDetailViewModel
-import kotlinx.android.synthetic.main.fragment_case_history.*
+import kotlinx.android.synthetic.main.fragment_case_history_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class CardboardCaseReferHistoryFragment(
@@ -30,7 +30,7 @@ internal class CardboardCaseReferHistoryFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_case_history, container, false)
+        return inflater.inflate(R.layout.fragment_case_history_cardboard, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

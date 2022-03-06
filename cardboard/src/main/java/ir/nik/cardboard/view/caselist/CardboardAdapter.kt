@@ -8,7 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.nik.cardboard.R
 import ir.nik.cardboard.data.network.model.response.CardboardInformationResponse
-import kotlinx.android.synthetic.main.item_case_list.view.*
+import kotlinx.android.synthetic.main.item_case_list_cardboard.view.*
 
 internal class CardboardAdapter(
     private val callback: (CardboardInformationResponse.Result, Boolean) -> Unit
@@ -28,7 +28,7 @@ internal class CardboardAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_case_list, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_case_list_cardboard, parent, false)
         return CustomViewHolder(view)
     }
 

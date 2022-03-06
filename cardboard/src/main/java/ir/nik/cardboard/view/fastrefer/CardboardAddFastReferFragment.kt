@@ -20,8 +20,8 @@ import ir.nik.cardboard.data.network.model.response.CardboardFastReferResponse
 import ir.nik.cardboard.data.network.model.response.CardboardUserListResponse
 import ir.nik.cardboard.utils.*
 import ir.nik.cardboard.view.base.CardboardBaseFragment
-import kotlinx.android.synthetic.main.contain_add_fast_refer.*
-import kotlinx.android.synthetic.main.fragment_add_fast_refer.*
+import kotlinx.android.synthetic.main.contain_add_fast_refer_cardboard.*
+import kotlinx.android.synthetic.main.fragment_add_fast_refer_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class CardboardAddFastReferFragment() : CardboardBaseFragment() {
@@ -73,7 +73,7 @@ internal class CardboardAddFastReferFragment() : CardboardBaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_add_fast_refer, container, false)
+        return inflater.inflate(R.layout.fragment_add_fast_refer_cardboard, container, false)
     }
 
     override fun handleObservers() {

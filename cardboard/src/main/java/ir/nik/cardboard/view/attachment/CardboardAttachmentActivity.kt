@@ -19,7 +19,7 @@ internal class CardboardAttachmentActivity : CardboardBaseActivity() {
 
     }
     override fun onCreate(savedInstanceState: Bundle?) {
-        setContentView(R.layout.activity_attachment)
+        setContentView(R.layout.activity_attachment_cardboard)
         super.onCreate(savedInstanceState)
 
         replaceFragmentInActivity(

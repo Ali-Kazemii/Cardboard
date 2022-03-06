@@ -21,9 +21,9 @@ import ir.nik.cardboard.data.network.model.request.CardboardPostAttachmentReques
 import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.utils.PATH_STORAGE
 import ir.nik.cardboard.view.base.CardboardBaseFragment
-import kotlinx.android.synthetic.main.fragment_add_attachment.*
-import kotlinx.android.synthetic.main.item_attachment_delete.view.*
-import kotlinx.android.synthetic.main.item_attachment_image.view.*
+import kotlinx.android.synthetic.main.fragment_add_attachment_cardboard.*
+import kotlinx.android.synthetic.main.item_attachment_delete_cardboard.view.*
+import kotlinx.android.synthetic.main.item_attachment_image_cardboard.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
@@ -49,7 +49,7 @@ internal class CardboardAddAttachmentFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_add_attachment, container, false)
+        return inflater.inflate(R.layout.fragment_add_attachment_cardboard, container, false)
     }
 
     override fun handleOnClickListeners() {
@@ -119,7 +119,7 @@ internal class CardboardAddAttachmentFragment(
         attachments.forEach { item ->
             val view =
                 LayoutInflater.from(requireContext())
-                    .inflate(R.layout.item_attachment_delete, layoutAttachment, false)
+                    .inflate(R.layout.item_attachment_delete_cardboard, layoutAttachment, false)
             view.txtFileName.text = item.name
             view.txtFileSize.text = getFileSize(item.size)
             view.btnDelete.setOnClickListener {
@@ -140,7 +140,7 @@ internal class CardboardAddAttachmentFragment(
     private fun createImageEdited(fileName: String) {
         val path = PATH_STORAGE + File.separator + fileName
         val view = LayoutInflater.from(activity)
-            .inflate(R.layout.item_attachment_image, layoutAttachment, false)
+            .inflate(R.layout.item_attachment_image_cardboard, layoutAttachment, false)
         view?.let {
             it.txtImageName.text = fileName
             Glide.with(this)

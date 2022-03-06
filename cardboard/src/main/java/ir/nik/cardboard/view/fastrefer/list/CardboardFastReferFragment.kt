@@ -17,7 +17,7 @@ import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.utils.fastReferJson
 import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.fastrefer.CardboardFastReferViewModel
-import kotlinx.android.synthetic.main.fragment_fast_refer.*
+import kotlinx.android.synthetic.main.fragment_fast_refer_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class CardboardFastReferFragment(
@@ -38,7 +38,7 @@ internal class CardboardFastReferFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_fast_refer, container, false)
+        return inflater.inflate(R.layout.fragment_fast_refer_cardboard, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

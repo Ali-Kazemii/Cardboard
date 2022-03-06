@@ -26,8 +26,8 @@ import ir.nik.cardboard.data.network.model.response.CardboardProjectSpacialListR
 import ir.nik.cardboard.utils.*
 import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.createletter.CreateLetterViewModel
-import kotlinx.android.synthetic.main.contain_letter_further_information.*
-import kotlinx.android.synthetic.main.fragment_letter_extra_information.*
+import kotlinx.android.synthetic.main.contain_letter_further_information_cardboard.*
+import kotlinx.android.synthetic.main.fragment_letter_extra_information_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class LetterExtraInformationFragment(
@@ -128,7 +128,7 @@ internal class LetterExtraInformationFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_letter_extra_information, container, false)
+        return inflater.inflate(R.layout.fragment_letter_extra_information_cardboard, container, false)
     }
 
     override fun handleObservers() {
@@ -328,7 +328,7 @@ internal class LetterExtraInformationFragment(
 
     private fun createKeyWord(keyWord: String) {
         val view =
-            LayoutInflater.from(activity).inflate(R.layout.item_chip, layoutKeyWords, false) as Chip
+            LayoutInflater.from(activity).inflate(R.layout.item_chip_cardboard, layoutKeyWords, false) as Chip
         view.text = keyWord
         view.setOnClickListener { layoutKeyWords.removeView(view) }
         view.setOnCloseIconClickListener { layoutKeyWords.removeView(view) }

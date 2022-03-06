@@ -11,7 +11,7 @@ import ir.nik.cardboard.data.network.model.base.BaseGetRequest
 import ir.nik.cardboard.data.network.model.response.CardboardReceiverResponse
 import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.utils.receiverJson
-import kotlinx.android.synthetic.main.dialog_receiver_list.*
+import kotlinx.android.synthetic.main.dialog_receiver_list_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class CardboardReceiverDialog(
@@ -27,7 +27,7 @@ internal class CardboardReceiverDialog(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.dialog_receiver_list, container, false)
+        return inflater.inflate(R.layout.dialog_receiver_list_cardboard, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

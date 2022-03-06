@@ -11,7 +11,7 @@ import ir.awlrhm.modules.extentions.showDateDialog
 import ir.awlrhm.modules.models.ItemModel
 import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.view.caselist.CardboardCaseListViewModel
-import kotlinx.android.synthetic.main.dialog_case_filter.*
+import kotlinx.android.synthetic.main.dialog_case_filter_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class CardboardCaseFilterDialog(
@@ -25,7 +25,7 @@ internal class CardboardCaseFilterDialog(
     @SuppressLint("RestrictedApi")
     override fun setupDialog(dialog: Dialog, style: Int) {
         super.setupDialog(dialog, style)
-        dialog.setContentView(R.layout.dialog_case_filter)
+        dialog.setContentView(R.layout.dialog_case_filter_cardboard)
         val activity = activity ?: return
 
         dialog.dvFrom.date = viewModel.documentStartDate

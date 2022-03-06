@@ -14,7 +14,7 @@ import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.utils.convertUTTWFSModelToJson
 import ir.nik.cardboard.view.base.CardboardChildActivity
 import ir.nik.cardboard.view.cardboard.CardboardActivity
-import kotlinx.android.synthetic.main.activity_refer.*
+import kotlinx.android.synthetic.main.activity_refer_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class CardboardReferActivity : CardboardChildActivity() {
@@ -43,7 +43,7 @@ internal class CardboardReferActivity : CardboardChildActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setContentView(R.layout.activity_refer)
+        setContentView(R.layout.activity_refer_cardboard)
         super.onCreate(savedInstanceState)
 
         showAddRefer(true)

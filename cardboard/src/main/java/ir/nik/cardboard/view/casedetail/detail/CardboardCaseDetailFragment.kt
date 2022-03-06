@@ -23,9 +23,9 @@ import ir.nik.cardboard.utils.convertUTTWFSModelToJson
 import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.casedetail.CardboardCaseDetailViewModel
 import ir.nik.cardboard.view.dialog.CardboardNoteDialog
-import kotlinx.android.synthetic.main.contain_case_detail.*
-import kotlinx.android.synthetic.main.fragment_case_detail.*
-import kotlinx.android.synthetic.main.item_information.view.*
+import kotlinx.android.synthetic.main.contain_case_detail_cardboard.*
+import kotlinx.android.synthetic.main.fragment_case_detail_cardboard.*
+import kotlinx.android.synthetic.main.item_information_cardboard.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class CardboardCaseDetailFragment(
@@ -42,7 +42,7 @@ internal class CardboardCaseDetailFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_case_detail, container, false)
+        return inflater.inflate(R.layout.fragment_case_detail_cardboard, container, false)
     }
 
     override fun onResume() {
@@ -148,7 +148,7 @@ internal class CardboardCaseDetailFragment(
 
         data.split(",").forEachIndexed { index, value ->
             val view = LayoutInflater.from(activity)
-                .inflate(R.layout.item_information, layoutInformation, false)
+                .inflate(R.layout.item_information_cardboard, layoutInformation, false)
             view.txtInformation.text = value
             val color = if (index % 2 == 0)
                 R.color.grey_200

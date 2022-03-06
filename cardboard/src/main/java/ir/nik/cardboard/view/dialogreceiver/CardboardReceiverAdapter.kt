@@ -9,7 +9,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.nik.cardboard.R
 import ir.awlrhm.modules.extentions.convertToBitmap
 import ir.nik.cardboard.data.network.model.response.CardboardReceiverResponse
-import kotlinx.android.synthetic.main.item_receiver.view.*
+import kotlinx.android.synthetic.main.item_receiver_cardboard.view.*
 
 internal class CardboardReceiverAdapter(
     val list: MutableList<CardboardReceiverResponse.Result>,
@@ -18,7 +18,7 @@ internal class CardboardReceiverAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_receiver, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_receiver_cardboard, parent, false)
         return CustomViewHolder(view)
     }
 

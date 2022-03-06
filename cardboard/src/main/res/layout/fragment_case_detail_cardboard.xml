@@ -95,7 +95,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/contain_case_detail" />
+    <include layout="@layout/contain_case_detail_cardboard" />
 
     <include
         android:id="@+id/actionLoading"

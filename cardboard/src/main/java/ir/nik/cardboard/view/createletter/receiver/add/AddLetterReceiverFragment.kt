@@ -24,8 +24,8 @@ import ir.nik.cardboard.data.network.model.utt.CardboardUttWfsModel
 import ir.nik.cardboard.utils.*
 import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.createletter.CreateLetterViewModel
-import kotlinx.android.synthetic.main.contain_letter_receiver.*
-import kotlinx.android.synthetic.main.fragment_letter_add_receiver.*
+import kotlinx.android.synthetic.main.contain_letter_receiver_cardboard.*
+import kotlinx.android.synthetic.main.fragment_letter_add_receiver_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class AddLetterReceiverFragment(
@@ -114,7 +114,7 @@ internal class AddLetterReceiverFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_letter_add_receiver, container, false)
+        return inflater.inflate(R.layout.fragment_letter_add_receiver_cardboard, container, false)
     }
 
     override fun handleObservers() {

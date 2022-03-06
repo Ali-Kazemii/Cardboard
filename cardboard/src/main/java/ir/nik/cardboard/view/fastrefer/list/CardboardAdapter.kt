@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nik.cardboard.R
 import ir.nik.cardboard.data.network.model.response.CardboardFastReferResponse
-import kotlinx.android.synthetic.main.item_fast_refer.view.*
+import kotlinx.android.synthetic.main.item_fast_refer_cardboard.view.*
 
 internal class CardboardAdapter(
     private val list: MutableList<CardboardFastReferResponse.Result>,
@@ -15,7 +15,7 @@ internal class CardboardAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_fast_refer, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_fast_refer_cardboard, parent, false)
         return CustomViewHolder(view)
     }
 

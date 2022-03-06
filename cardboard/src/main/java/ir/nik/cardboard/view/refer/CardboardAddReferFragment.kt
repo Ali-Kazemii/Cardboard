@@ -24,7 +24,7 @@ import ir.nik.cardboard.data.network.model.utt.CardboardUttWfsModel
 import ir.nik.cardboard.utils.*
 import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.dialogreceiver.CardboardReceiverDialog
-import kotlinx.android.synthetic.main.fragment_add_refer.*
+import kotlinx.android.synthetic.main.fragment_add_refer_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class CardboardAddReferFragment(
@@ -60,7 +60,7 @@ internal class CardboardAddReferFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_add_refer, container, false)
+        val view = inflater.inflate(R.layout.fragment_add_refer_cardboard, container, false)
         setHasOptionsMenu(true)
         return view
     }

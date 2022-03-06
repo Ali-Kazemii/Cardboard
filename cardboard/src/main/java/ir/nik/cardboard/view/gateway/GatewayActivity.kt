@@ -13,7 +13,7 @@ import ir.nik.cardboard.view.createletter.CreateLetterActivity
 import ir.nik.cardboard.view.gateway.model.CardboardBindDataModel
 import ir.nik.cardboard.view.gateway.model.CaseType
 import ir.nik.cardboard.view.gateway.model.KEY_CARDBOARD
-import kotlinx.android.synthetic.main.contain_letter_information.*
+import kotlinx.android.synthetic.main.contain_letter_information_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GatewayActivity : AppCompatActivity() {

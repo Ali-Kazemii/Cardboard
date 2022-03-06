@@ -30,7 +30,7 @@ import ir.nik.cardboard.view.dialog.CardboardNoteDialog
 import ir.nik.cardboard.view.gateway.model.CaseType
 import ir.nik.cardboard.view.refer.CardboardReferActivity
 import ir.nik.cardboard.view.search.SearchActivity
-import kotlinx.android.synthetic.main.activity_case_list.*
+import kotlinx.android.synthetic.main.activity_case_list_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.Serializable
 
@@ -63,7 +63,7 @@ internal class CardboardCaseListActivity : CardboardChildActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setContentView(R.layout.activity_case_list)
+        setContentView(R.layout.activity_case_list_cardboard)
         super.onCreate(savedInstanceState)
 
     }

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nik.cardboard.R
 import ir.nik.cardboard.data.network.model.response.CardboardCaseListLinkedResponse
-import kotlinx.android.synthetic.main.item_letter_linked.view.*
+import kotlinx.android.synthetic.main.item_letter_linked_cardboard.view.*
 
 internal class Adapter(
     private val list: List<CardboardCaseListLinkedResponse.Result>,
@@ -14,7 +14,7 @@ internal class Adapter(
 ): RecyclerView.Adapter<Adapter.CustomViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_letter_linked, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_letter_linked_cardboard, parent, false)
         return CustomViewHolder(view)
     }
 

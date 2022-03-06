@@ -14,7 +14,7 @@ import ir.nik.cardboard.data.network.model.response.CardboardDraftLetterResponse
 import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.createletter.CreateLetterViewModel
-import kotlinx.android.synthetic.main.fragment_letter_step.*
+import kotlinx.android.synthetic.main.fragment_letter_step_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class LetterStepFragment(
@@ -68,7 +68,7 @@ internal class LetterStepFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_letter_step, container, false)
+        return inflater.inflate(R.layout.fragment_letter_step_cardboard, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

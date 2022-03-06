@@ -20,7 +20,7 @@ import ir.nik.cardboard.data.network.model.response.CardboardDraftLetterResponse
 import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.createletter.CreateLetterViewModel
-import kotlinx.android.synthetic.main.fragment_letter_drafts.*
+import kotlinx.android.synthetic.main.fragment_letter_drafts_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class LetterDraftFragment(
@@ -40,7 +40,7 @@ internal class LetterDraftFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_letter_drafts, container, false)
+        return inflater.inflate(R.layout.fragment_letter_drafts_cardboard, container, false)
     }
 
     override fun onResume() {

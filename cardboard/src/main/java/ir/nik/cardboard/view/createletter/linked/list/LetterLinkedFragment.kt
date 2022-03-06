@@ -16,7 +16,7 @@ import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.utils.caseLinkedJson
 import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.createletter.CreateLetterViewModel
-import kotlinx.android.synthetic.main.fragment_letter_linked.*
+import kotlinx.android.synthetic.main.fragment_letter_linked_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class LetterLinkedFragment(
@@ -37,7 +37,7 @@ internal class LetterLinkedFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_letter_linked, container, false)
+        return inflater.inflate(R.layout.fragment_letter_linked_cardboard, container, false)
     }
 
     private fun getLinkedLetter() {

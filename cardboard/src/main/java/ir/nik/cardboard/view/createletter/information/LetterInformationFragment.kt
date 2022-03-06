@@ -26,8 +26,8 @@ import ir.nik.cardboard.utils.documentSendReceiveMethodJson
 import ir.nik.cardboard.utils.letterInformationJson
 import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.createletter.CreateLetterViewModel
-import kotlinx.android.synthetic.main.contain_letter_information.*
-import kotlinx.android.synthetic.main.fragment_letter_information.*
+import kotlinx.android.synthetic.main.contain_letter_information_cardboard.*
+import kotlinx.android.synthetic.main.fragment_letter_information_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class LetterInformationFragment(
@@ -118,7 +118,7 @@ internal class LetterInformationFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_letter_information, container, false)
+        return inflater.inflate(R.layout.fragment_letter_information_cardboard, container, false)
     }
 
 

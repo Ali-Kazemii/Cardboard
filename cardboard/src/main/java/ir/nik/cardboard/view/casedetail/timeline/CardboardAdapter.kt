@@ -9,7 +9,7 @@ import ir.nik.cardboard.view.casedetail.timeline.CardboardViewType.Companion.CRE
 import ir.nik.cardboard.view.casedetail.timeline.CardboardViewType.Companion.ITEM
 import ir.nik.cardboard.view.casedetail.timeline.CardboardViewType.Companion.SENDER
 import ir.nik.cardboard.view.casedetail.timeline.CardboardViewType.Companion.SPECIFIC
-import kotlinx.android.synthetic.main.item_case_history.view.*
+import kotlinx.android.synthetic.main.item_case_history_cardboard.view.*
 import pl.hypeapp.materialtimelineview.MaterialTimelineView
 
 internal class CardboardAdapter(private val list:MutableList<CardboardViewType>)
@@ -21,8 +21,8 @@ internal class CardboardAdapter(private val list:MutableList<CardboardViewType>)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimelineViewHolder {
         return when (viewType) {
-            CardboardViewType.LINE -> TimelineViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.timeline_line, parent, false))
-            else -> TimelineViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_case_history, parent, false))
+            CardboardViewType.LINE -> TimelineViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.timeline_line_cardboard, parent, false))
+            else -> TimelineViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_case_history_cardboard, parent, false))
         }
     }
 

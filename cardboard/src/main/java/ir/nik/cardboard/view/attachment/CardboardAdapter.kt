@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nik.cardboard.R
 import ir.awlrhm.modules.extentions.convertToBitmap
 import ir.nik.cardboard.data.network.model.response.CardboardAttachmentListResponse
-import kotlinx.android.synthetic.main.item_attachment.view.*
+import kotlinx.android.synthetic.main.item_attachment_cardboard.view.*
 
 internal class CardboardAdapter(
     private var list: MutableList<CardboardAttachmentListResponse.Result>,
@@ -16,7 +16,7 @@ internal class CardboardAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_attachment, parent, false)
+            .inflate(R.layout.item_attachment_cardboard, parent, false)
         return CustomViewHolder(view)
     }
 

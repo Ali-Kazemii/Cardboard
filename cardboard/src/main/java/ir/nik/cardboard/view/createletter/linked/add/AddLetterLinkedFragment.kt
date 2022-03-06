@@ -20,8 +20,8 @@ import ir.nik.cardboard.utils.documentRelationTypeJson
 import ir.nik.cardboard.utils.getLetterLinkedJson
 import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.createletter.CreateLetterViewModel
-import kotlinx.android.synthetic.main.contain_letter_linked.*
-import kotlinx.android.synthetic.main.fragment_letter_add_linked.*
+import kotlinx.android.synthetic.main.contain_letter_linked_cardboard.*
+import kotlinx.android.synthetic.main.fragment_letter_add_linked_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class AddLetterLinkedFragment(
@@ -43,7 +43,7 @@ internal class AddLetterLinkedFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_letter_add_linked, container, false)
+        return inflater.inflate(R.layout.fragment_letter_add_linked_cardboard, container, false)
     }
 
     override fun handleObservers() {

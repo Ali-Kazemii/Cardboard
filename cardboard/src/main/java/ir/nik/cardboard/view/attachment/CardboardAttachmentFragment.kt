@@ -18,7 +18,7 @@ import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.utils.PATH_STORAGE
 import ir.nik.cardboard.utils.attachmentJson
 import ir.nik.cardboard.view.base.CardboardBaseFragment
-import kotlinx.android.synthetic.main.fragment_attachment.*
+import kotlinx.android.synthetic.main.fragment_attachment_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class CardboardAttachmentFragment(
@@ -40,7 +40,7 @@ internal class CardboardAttachmentFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_attachment, container, false)
+        return inflater.inflate(R.layout.fragment_attachment_cardboard, container, false)
     }
 
     override fun onResume() {

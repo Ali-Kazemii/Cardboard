@@ -60,7 +60,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/contain_letter_information"/>
+    <include layout="@layout/contain_letter_information_cardboard"/>
     <include
         android:id="@+id/loading"
         layout="@layout/loading"

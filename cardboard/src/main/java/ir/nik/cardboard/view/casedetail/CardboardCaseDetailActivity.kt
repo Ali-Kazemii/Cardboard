@@ -13,14 +13,14 @@ import ir.nik.cardboard.view.casedetail.detail.CardboardCaseDetailFragment
 import ir.nik.cardboard.view.casedetail.report.CardboardCaseDetailReportFragment
 import ir.nik.cardboard.view.casedetail.timeline.CardboardCaseReferHistoryFragment
 import ir.nik.cardboard.view.refer.CardboardReferActivity
-import kotlinx.android.synthetic.main.activity_case_detail.*
-import kotlinx.android.synthetic.main.contain_case_detail.*
-import kotlinx.android.synthetic.main.item_information.view.*
+import kotlinx.android.synthetic.main.activity_case_detail_cardboard.*
+import kotlinx.android.synthetic.main.contain_case_detail_cardboard.*
+import kotlinx.android.synthetic.main.item_information_cardboard.view.*
 
 internal class CardboardCaseDetailActivity : CardboardChildActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setContentView(R.layout.activity_case_detail)
+        setContentView(R.layout.activity_case_detail_cardboard)
         super.onCreate(savedInstanceState)
 
         val model =

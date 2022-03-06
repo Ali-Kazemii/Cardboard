@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.nik.cardboard.R
 import ir.nik.cardboard.utils.Const
-import kotlinx.android.synthetic.main.dialog_note.*
+import kotlinx.android.synthetic.main.dialog_note_cardboard.*
 
 class CardboardNoteDialog(
     private val callback: (String) -> Unit
@@ -17,7 +17,7 @@ class CardboardNoteDialog(
         super.setupDialog(dialog, style)
         val activity = activity ?: return
 
-        dialog.setContentView(R.layout.dialog_note)
+        dialog.setContentView(R.layout.dialog_note_cardboard)
         dialog.layoutOk.setOnClickListener {
             if (dialog.edtNote.text.toString().isNotEmpty()) {
                 callback.invoke(dialog.edtNote.text.toString())

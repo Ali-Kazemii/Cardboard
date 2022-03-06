@@ -6,14 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nik.cardboard.R
 import ir.awlrhm.modules.extentions.convertToBitmap
-import kotlinx.android.synthetic.main.item_refer.view.*
+import kotlinx.android.synthetic.main.item_refer_cardboard.view.*
 
 internal class CardboardAdapter(
     private var list: MutableList<CardboardReferModel>
 ): RecyclerView.Adapter<CardboardAdapter.CustomViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_refer, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_refer_cardboard, parent, false)
         return CustomViewHolder(view)
     }
 

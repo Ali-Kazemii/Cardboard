@@ -24,7 +24,7 @@ import ir.nik.cardboard.view.createletter.linked.list.LetterLinkedFragment
 import ir.nik.cardboard.view.createletter.receiver.add.AddLetterReceiverFragment
 import ir.nik.cardboard.view.createletter.receiver.list.LetterReceiverFragment
 import ir.nik.cardboard.view.createletter.step.LetterStepFragment
-import kotlinx.android.synthetic.main.activity_create_letter.*
+import kotlinx.android.synthetic.main.activity_create_letter_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class CreateLetterActivity : CardboardBaseActivity() {
@@ -41,7 +41,7 @@ internal class CreateLetterActivity : CardboardBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_letter)
+        setContentView(R.layout.activity_create_letter_cardboard)
 
         gotoDraftLetters()
     }

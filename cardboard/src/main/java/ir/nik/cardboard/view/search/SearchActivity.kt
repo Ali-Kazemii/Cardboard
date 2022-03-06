@@ -16,8 +16,7 @@ import ir.nik.cardboard.view.base.CardboardChildActivity
 import ir.nik.cardboard.view.casedetail.CardboardCaseDetailActivity
 import ir.nik.cardboard.view.caselist.CardboardAdapter
 import ir.nik.cardboard.view.caselist.CardboardCaseListViewModel
-
-import kotlinx.android.synthetic.main.activity_search.*
+import kotlinx.android.synthetic.main.activity_search_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class SearchActivity : CardboardChildActivity() {
@@ -53,7 +52,7 @@ internal class SearchActivity : CardboardChildActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setContentView(R.layout.activity_search)
+        setContentView(R.layout.activity_search_cardboard)
         super.onCreate(savedInstanceState)
 
         edtSearch.requestFocus()

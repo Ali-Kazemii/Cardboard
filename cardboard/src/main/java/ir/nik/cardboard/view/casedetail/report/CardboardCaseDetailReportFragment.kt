@@ -18,8 +18,8 @@ import ir.nik.cardboard.utils.caseDetailBodyJson
 import ir.nik.cardboard.utils.historyReportJson
 import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.casedetail.CardboardCaseDetailViewModel
-import kotlinx.android.synthetic.main.contain_case_detail_report.*
-import kotlinx.android.synthetic.main.fragment_case_detail_report.*
+import kotlinx.android.synthetic.main.contain_case_detail_report_cardboard.*
+import kotlinx.android.synthetic.main.fragment_case_detail_report_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CardboardCaseDetailReportFragment(
@@ -61,7 +61,7 @@ class CardboardCaseDetailReportFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_case_detail_report,container, false)
+        return inflater.inflate(R.layout.fragment_case_detail_report_cardboard,container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

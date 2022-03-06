@@ -12,7 +12,7 @@ internal class CardboardFastReferActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_fast_refer)
+        setContentView(R.layout.activity_fast_refer_cardboard)
 
         gotoReferList()
     }

@@ -20,7 +20,7 @@ import ir.nik.cardboard.utils.Const
 import ir.nik.cardboard.utils.caseReferralListByWFSCaseId
 import ir.nik.cardboard.view.base.CardboardBaseFragment
 import ir.nik.cardboard.view.createletter.CreateLetterViewModel
-import kotlinx.android.synthetic.main.fragment_letter_receiver.*
+import kotlinx.android.synthetic.main.fragment_letter_receiver_cardboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 internal class LetterReceiverFragment(
@@ -48,7 +48,7 @@ internal class LetterReceiverFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_letter_receiver, container, false)
+        return inflater.inflate(R.layout.fragment_letter_receiver_cardboard, container, false)
     }
 
     override fun onResume() {
